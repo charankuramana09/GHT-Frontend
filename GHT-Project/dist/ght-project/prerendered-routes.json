@@ -1,0 +1,15 @@
+{
+  "routes": [
+    "/classes",
+    "/home",
+    "/instructor-signup",
+    "/login",
+    "/parent-signup",
+    "/student",
+    "/student-dashboard",
+    "/student-signup",
+    "/tutor",
+    "/tutor-dashboard",
+    "/tutor-park"
+  ]
+}
