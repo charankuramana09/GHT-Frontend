@@ -2,13 +2,13 @@
 <div class="container-fluid py-5">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-5">
-                <div class="card border-0">
+            <div class="col-lg-6 mx-auto">
+                <div class="card border-0 shadow-lg">
                     <div class="card-header bg-light text-center p-4">
                         <h1 class="text-dark m-0">Book A Seat</h1>
                     </div>
                     <div class="card-body rounded-bottom bg-primary p-5">
-                        <form (ngSubmit)="onSubmit()">
+                        <form (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
                             <div class="form-group">
                                 <input
                                     type="text"
@@ -16,8 +16,11 @@
                                     placeholder="Your Name"
                                     [(ngModel)]="formData.name"
                                     name="name"
-                                    required="required"
+                                    required
                                 />
+                                <div class="invalid-feedback">
+                                    Please provide your name.
+                                </div>
                             </div>
                             <div class="form-group">
                                 <input
@@ -26,8 +29,11 @@
                                     placeholder="Your Email"
                                     [(ngModel)]="formData.email"
                                     name="email"
-                                    required="required"
+                                    required
                                 />
+                                <div class="invalid-feedback">
+                                    Please provide a valid email address.
+                                </div>
                             </div>
                             <div class="form-group">
                                 <select
@@ -35,12 +41,16 @@
                                     style="height: 47px"
                                     [(ngModel)]="formData.subject"
                                     name="subject"
+                                    required
                                 >
-                                    <option selected>Select A Subject</option>
+                                    <option selected disabled>Select A Subject</option>
                                     <option value="Mathematics">Mathematics</option>
                                     <option value="Physics">Physics</option>
                                     <option value="Drawing">Drawing</option>
                                 </select>
+                                <div class="invalid-feedback">
+                                    Please select a subject.
+                                </div>
                             </div>
                             <div class="form-group">
                                 <select
@@ -48,22 +58,26 @@
                                     style="height: 47px"
                                     [(ngModel)]="formData.tutor"
                                     name="tutor"
+                                    required
                                 >
-                                    <option selected>Select A Tutor</option>
+                                    <option selected disabled>Select A Tutor</option>
                                     <option value="Charan">Charan</option>
                                     <option value="Shiva">Shiva</option>
                                     <option value="Mahesh">Mahesh</option>
                                 </select>
+                                <div class="invalid-feedback">
+                                    Please select a tutor.
+                                </div>
                             </div>
-                            <!-- New field for class selection -->
                             <div class="form-group">
                                 <select
                                     class="custom-select border-0 px-4"
                                     style="height: 47px"
                                     [(ngModel)]="formData.classLevel"
                                     name="class"
+                                    required
                                 >
-                                    <option selected>Select A Class</option>
+                                    <option selected disabled>Select A Class</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -75,16 +89,21 @@
                                     <option value="9">9</option>
                                     <option value="10">10</option>
                                 </select>
+                                <div class="invalid-feedback">
+                                    Please select a class.
+                                </div>
                             </div>
-                            <!-- New field for date selection -->
                             <div class="form-group">
                                 <input
                                     type="date"
                                     class="form-control border-0 p-4"
                                     [(ngModel)]="formData.date"
                                     name="date"
-                                    required="required"
+                                    required
                                 />
+                                <div class="invalid-feedback">
+                                    Please select a date.
+                                </div>
                             </div>
                             <div>
                                 <button
@@ -101,4 +120,3 @@
         </div>
     </div>
 </div>
-

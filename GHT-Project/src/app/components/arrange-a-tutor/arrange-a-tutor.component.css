@@ -1,0 +1,72 @@
+/* arrange-a-tutor.component.css */
+
+/* Add some padding to the form */
+.container {
+    padding: 20px;
+}
+
+/* Style the card header */
+.card-header {
+    border-bottom: 2px solid #ccc;
+}
+
+/* Add some spacing between form groups */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Style the form inputs */
+.form-control {
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Style the select dropdown */
+.custom-select {
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Add hover effect to form controls */
+.form-control:hover,
+.custom-select:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Add focus effect to form controls */
+.form-control:focus,
+.custom-select:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the submit button */
+.btn-secondary {
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Add hover effect to the submit button */
+.btn-secondary:hover {
+    background-color: #333;
+}
+
+/* Add transition effect to the submit button */
+.btn-secondary {
+    transition: all 0.3s ease;
+}
+
+/* Add animation to the submit button on hover */
+.btn-secondary:hover {
+    transform: translateY(-3px);
+}
+
+/* Add animation to the form card */
+.card {
+    transition: all 0.3s ease;
+}
+
+/* Add animation to the form card on hover */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}

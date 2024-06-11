@@ -64,7 +64,7 @@ const appRouting: Routes =[
     StudentDashboardProfileComponent,
     ArrangeATutorComponent,
     ContactComponent,
-    DataDialogComponent
+    DataDialogComponent,
   ],
   imports: [
     BrowserModule ,
