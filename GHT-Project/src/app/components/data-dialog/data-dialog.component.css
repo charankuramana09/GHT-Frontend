@@ -1,0 +1,18 @@
+/* Add your custom styles here */
+:host {
+    display: block;
+    padding: 20px;
+  }
+  
+  .mat-dialog-container {
+    max-width: 600px; /* Set the maximum width of the dialog */
+  }
+  
+  .dialog-content {
+    /* Add styles for the dialog content */
+  }
+  
+  .dialog-close-button {
+    /* Add styles for the close button */
+  }
+  

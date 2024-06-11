@@ -1,0 +1,72 @@
+<div class="student-dashboard">
+  <h1>Student Dashboard</h1>
+
+  <div class="student-info card">
+    <h2>Student Information</h2>
+
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input id="title" type="text" [(ngModel)]="student.title">
+    </div>
+
+    <!-- Add animation class for form groups -->
+    <div class="form-group animated-form">
+      <label for="firstName">First Name:</label>
+      <input id="firstName" type="text" [(ngModel)]="student.firstName">
+    </div>
+    <div class="form-group animated-form">
+      <label for="lastName">Last Name:</label>
+      <input id="lastName" type="text" [(ngModel)]="student.lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="class">Class:</label>
+      <input id="class" type="text" [(ngModel)]="student.class">
+    </div>
+
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input id="location" type="text" [(ngModel)]="student.location">
+    </div>
+    <div class="form-group">
+      <label for="subjects">Subjects:</label>
+      <input id="subjects" type="text" [(ngModel)]="student.subjects">
+    </div>
+    <h3>Daily Report:</h3>
+    <div class="calendar-widget">
+      <!-- Add Calendar Widget Here -->
+    </div>
+    <div class="form-group">
+      <label for="notes">Notes:</label>
+      <textarea id="notes" [(ngModel)]="student.notes"></textarea>
+    </div>
+  </div>
+
+  <div class="payments-info card">
+    <h2>Payments Information</h2>
+    <div class="form-group">
+      <label for="invoices">Invoices:</label>
+      <input id="invoices" type="text" [(ngModel)]="payments.invoices">
+    </div>
+    <div class="form-group">
+      <label for="dates">Dates:</label>
+      <input id="dates" type="text" [(ngModel)]="payments.dates">
+    </div>
+    <div class="form-group">
+      <label for="status">Payment Status:</label>
+      <input id="status" type="text" [(ngModel)]="payments.status">
+    </div>
+    <button class="animated-button" (click)="generateMonthlyInvoice()">Generate Monthly Invoice</button>
+  </div>
+
+  <div class="test-summary card">
+    <h2>Test Summary</h2>
+    <button class="animated-button" (click)="createNewSummary()">Create New Summary</button>
+  </div>
+
+  <div class="profile-section card">
+    <h2>Profile Section</h2>
+    <button class="animated-button" (click)="editProfile()">Edit Profile</button>
+    <button class="animated-button" (click)="demoLinks()">Demo Links</button>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<form [formGroup]="registrationForm" class="form-container">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name" type="text" class="form-control">
+  </div>
+  
+  <div class="form-group">
+    <label for="surname">Surname:</label>
+    <input id="surname" formControlName="surname" type="text" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>Gender:</label>
+    <label><input formControlName="gender" type="radio" value="male"> Male</label>
+    <label><input formControlName="gender" type="radio" value="female"> Female</label>
+  </div>
+
+  <div class="form-group">
+    <label for="dob">DOB:</label>
+    <input id="dob" formControlName="dob" type="date" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="city">City:</label>
+    <input id="city" formControlName="city" type="text" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="mobileNo">Mobile No.:</label>
+    <input id="mobileNo" formControlName="mobileNo" type="text" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email ID:</label>
+    <input id="email" formControlName="email" type="email" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input id="password" formControlName="password" type="password" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="confirmPassword">Confirm Password:</label>
+    <input id="confirmPassword" formControlName="confirmPassword" type="password" class="form-control">
+  </div>
+
+</form>

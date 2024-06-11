@@ -1,0 +1,26 @@
+
+<form (ngSubmit)="onSubmit()">
+  
+  <!-- personal information -->
+  <app-personal-registration> </app-personal-registration>
+
+
+  <div>
+    <label for="resume">Resume:</label>
+    <input type="file" id="resume" (change)="onFileChange($event, 'resume')" accept=".pdf, .docx, .jpeg, .png">
+  </div>
+  <div>
+    <label for="drivingLicense">Driving License:</label>
+    <input type="file" id="drivingLicense" (change)="onFileChange($event, 'drivingLicense')" accept=".pdf, .docx, .jpeg, .png">
+  </div>
+  <div>
+    <label for="addressProof">Address Proof:</label>
+    <input type="file" id="addressProof" (change)="onFileChange($event, 'addressProof')" accept=".pdf, .docx, .jpeg, .png">
+  </div>
+  <div>
+    <label for="photo">Photo:</label>
+    <input type="file" id="photo" (change)="onFileChange($event, 'photo')" accept=".pdf, .docx, .jpeg, .png">
+  </div>
+  <button type="submit">Submit</button>
+</form>
+

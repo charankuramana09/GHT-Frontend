@@ -1,0 +1,35 @@
+<div class="container-fluid bg-info px-0 px-md-5 mb-5">
+  <div class="row align-items-center px-3">
+    <div class="col-lg-6 text-center text-lg-left">
+      <h4 class="text-white mb-2 mt-5 mt-lg-0 text-lg-left">Kids Learning Center</h4>
+      <h1 class="display-3 font-weight-bold text-white text-lg-left">
+      A good #education is always a base of</h1>
+      <p class="text-white mt-1 text-lg-left">Equitable society. Consectur adipiscing elit sed do eiusmod tempor incididunt 
+        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+        laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <div class="text-lg-left">
+        <button class=" rounded-pill btn btn-success mt-1 py-3 px-3 mr-4" (click)="startAsStudent()">Start as Student
+         
+        </button>
+       
+        <button class=" rounded-pill btn btn-secondary mt-1 py-3 px-3" (click)="joinAsInstructor()">Join as Instructor</button>
+      </div>
+      <div class="footer text-white text-lg-left">
+        <p>It’s Free!</p>
+        <p>You can also join as parent to explore. <a (click)="joinAsParent()">Join today</a></p>
+      </div>
+    </div>
+    <div class="col-lg-6 text-center text-lg-right">
+      <img class="img-fluid mt-5" src="assets/img/header.png" alt="">
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <app-categories/>
+<app-tutor-list></app-tutor-list> -->
+<router-outlet/>
+  <!-- <app-curosel></app-curosel> -->
+
+  
