@@ -9,6 +9,11 @@ import { StudentDashboardService } from '../../services/student-dashboard.servic
   styleUrls: ['./student-login.component.css']
 })
 export class StudentLoginComponent {
+
+  email: string = '';
+  password: string = '';
+  userType: string = 'tutor';
+  
   // email: string = '';
   // password: string = '';
 
