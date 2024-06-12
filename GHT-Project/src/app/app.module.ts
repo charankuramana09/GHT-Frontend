@@ -28,6 +28,7 @@ import { ArrangeATutorComponent } from './components/arrange-a-tutor/arrange-a-t
 import { ContactComponent } from './components/contact/contact.component'
 import { DataDialogComponent } from './components/data-dialog/data-dialog.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { DemoDialogComponent } from './components/demo-dialog/demo-dialog.component';
 
 
 
@@ -65,6 +66,7 @@ const appRouting: Routes =[
     ArrangeATutorComponent,
     ContactComponent,
     DataDialogComponent,
+    DemoDialogComponent,
   ],
   imports: [
     BrowserModule ,

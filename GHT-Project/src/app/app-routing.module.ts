@@ -9,6 +9,7 @@ import { TutorDashboardComponent } from './tutor-park/tutor/tutor-dashboard/tuto
 import { StudentDashboardComponent } from './tutor-park/student/student-dashboard/student-dashboard.component';
 import { TutorParkComponent } from './tutor-park/tutor-park.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { TutorListComponent } from './components/tutor-list/tutor-list.component';
 
 const routes: Routes = [
  
@@ -18,7 +19,10 @@ const routes: Routes = [
   { path: 'tutor-dashboard', component: TutorDashboardComponent },
   { path: 'student-dashboard', component: StudentDashboardComponent },
   { path: 'tutor-park', component: TutorParkComponent },
-  {path: 'contact',component:ContactComponent}
+  { path: 'tutor', component: TutorListComponent },
+
+  // {path: 'contact',component:ContactComponent}
+
 
 ];
 

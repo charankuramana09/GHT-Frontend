@@ -1,0 +1,50 @@
+<!-- demo-dialog.component.html -->
+<div class="dialog-container">
+    <form (ngSubmit)="submitDemo()">
+      <h2>Book a Demo</h2>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="demoData.name" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="demoData.email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="class">Select a Class:</label>
+        <select id="class" name="class" [(ngModel)]="demoData.class" required>
+          <option value="">Select a Class</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <!-- Add options up to 10 -->
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="subject">Select a Subject:</label>
+        <select id="subject" name="subject" [(ngModel)]="demoData.subject" required>
+          <option value="">Select a Subject</option>
+          <option value="Maths">Maths</option>
+          <option value="Physics">Physics</option>
+          <option value="Drawing">Drawing</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="tutor">Select a Tutor:</label>
+        <select id="tutor" name="tutor" [(ngModel)]="demoData.tutor">
+          <option value="">Select a Tutor</option>
+          <option value="John Doe">John Doe</option>
+          <option value="Jane Smith">Jane Smith</option>
+          <option value="Michael Johnson">Michael Johnson</option>
+        </select>
+      </div>
+      
+      <div class="button-group">
+        <button type="submit">Book a Demo</button>
+      </div>
+    </form>
+  </div>
+  
