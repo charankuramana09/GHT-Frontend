@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import {  catchError, throwError } from 'rxjs';
 import { TutorDetails } from '../models/tutor-details.model';
 import { File } from 'node:buffer';
 import { fileURLToPath } from 'node:url';
 import { type } from 'node:os';
 import { Student } from '../tutor-park/student/student.model';
+import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -107,6 +108,18 @@ updateStudent(id: number, student: Object): Observable<Object> {
 deleteStudent(id: number): Observable<void> {
   return this.http.delete<void>(`${this.baseUrl}/${id}`);
 }
+
+
+
+
+  login(email: string, password: string, userType: string): Observable<boolean> {
+    // Replace with real authentication logic
+    if (email === 'test@test.com' && password === 'password' && (userType === 'tutor' || userType === 'student')) {
+      return of(true);
+    } else {
+      return of(false);
+    }
+  }
 
 
 
