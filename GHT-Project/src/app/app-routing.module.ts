@@ -10,6 +10,7 @@ import { StudentDashboardComponent } from './tutor-park/student/student-dashboar
 import { TutorParkComponent } from './tutor-park/tutor-park.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { TutorListComponent } from './components/tutor-list/tutor-list.component';
+import { StudentDashboardProfileComponent } from './components/student-dashboard-profile/student-dashboard-profile.component';
 
 const routes: Routes = [
  
@@ -17,11 +18,10 @@ const routes: Routes = [
   { path: 'instructor-signup', component: TutorRegistrationComponent },
   { path: 'parent-signup', component: ParentRegistrationComponent },
   { path: 'tutor-dashboard', component: TutorDashboardComponent },
-  { path: 'student-dashboard', component: StudentDashboardComponent },
+  { path: 'student-dashboard', component: StudentDashboardProfileComponent },
   { path: 'tutor-park', component: TutorParkComponent },
   { path: 'tutor', component: TutorListComponent },
 
-  // {path: 'contact',component:ContactComponent}
 
 
 ];

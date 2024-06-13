@@ -1,4 +1,4 @@
-<!-- student-login.component.html -->
+
 <div class="login-container">
   <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
 
@@ -13,40 +13,17 @@
     </div>
     <div class="form-group">
       <label for="email">Email</label>
-      <!-- <input
-        type="email"
-        id="email"
-        name="email"
-        ngModel
-        required
-        #email="ngModel"
-        class="form-control"
-        placeholder="Enter your email"
-      /> -->
+    
       <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" required>
 
-      <!-- <div *ngIf="email.invalid && email.touched" class="error">
-        Valid email is required.
-      </div> -->
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <!-- <input
-        type="password"
-        id="password"
-        name="password"
-        ngModel
-        required
-        #password="ngModel"
-        class="form-control"
-        placeholder="Enter your password"
-      /> -->
+     
       <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password" required>
 
 
-      <!-- <div *ngIf="password.invalid && password.touched" class="error">
-        Password is required.
-      </div> -->
+    
     </div>
     <div class="form-group remember-me">
       <input type="checkbox" id="rememberMe" name="rememberMe" ngModel />
