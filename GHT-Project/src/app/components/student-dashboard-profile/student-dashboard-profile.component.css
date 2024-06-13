@@ -12,13 +12,16 @@ body {
 .student-profile .card {
     border-radius: 10px;
 }
+ .card-details p{
+  color: #fff;
+}
 
 .student-profile .card .card-header .profile_img {
     width: 150px;
     height: 150px;
     object-fit: cover;
     margin: 10px auto;
-    border: 10px solid #ccc;
+    /* border: 10px solid #ccc; */
     border-radius: 50%;
 }
 
@@ -29,7 +32,7 @@ body {
 
 .student-profile .card p {
     font-size: 16px;
-    color: #000;
+    color:#fff;
 }
 
 .student-profile .table th,

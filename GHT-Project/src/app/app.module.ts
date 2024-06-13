@@ -32,6 +32,7 @@ import { DemoDialogComponent } from './components/demo-dialog/demo-dialog.compon
 
 
 
+
 const appRouting: Routes =[
   {path:'home', component:HomePageComponent},
  {path : 'tutor', component: TutorDashboardComponent},
@@ -67,6 +68,7 @@ const appRouting: Routes =[
     ContactComponent,
     DataDialogComponent,
     DemoDialogComponent,
+
   ],
   imports: [
     BrowserModule ,
