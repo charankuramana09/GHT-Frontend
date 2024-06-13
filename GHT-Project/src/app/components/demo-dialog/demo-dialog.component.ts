@@ -1,21 +1,46 @@
-import { Component,OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-demo-dialog',
   templateUrl: './demo-dialog.component.html',
-  styleUrl: './demo-dialog.component.css'
+  styleUrls: ['./demo-dialog.component.css']
 })
-export class DemoDialogComponent implements OnInit{
-  demoData: any = {};
+export class DemoDialogComponent {
 
-  constructor(public dialogRef: MatDialogRef<DemoDialogComponent>) {}
+  demoData = {
+    name: '',
+    email: '',
+    class: '',
+    subject: '',
+    tutor: ''
+  };
 
-  ngOnInit(): void {}
+  private apiUrl = 'http://localhost:5555/api/demo-booking/book'; 
+
+  constructor(private http: HttpClient) { } t
 
   submitDemo() {
-    // Send demoData to backend
-    console.log(this.demoData);
-    this.dialogRef.close();
+    this.http.post<any>(this.apiUrl, this.demoData).subscribe(
+      response => {
+        console.log('Demo booked successfully', response);
+        alert('Demo booked successfully!'); 
+        this.resetForm(); 
+      },
+      error => {
+        console.error('Error booking demo', error);
+        alert('Error booking demo. Please try again.'); 
+      }
+    );
+  }
+
+  resetForm() {
+    this.demoData = {
+      name: '',
+      email: '',
+      class: '',
+      subject: '',
+      tutor: ''
+    };
   }
 }

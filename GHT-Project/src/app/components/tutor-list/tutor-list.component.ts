@@ -1,31 +1,31 @@
-import { Component ,OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { TutorRegistrationService } from '../../services/tutor-registration.service';
+
+interface Tutor {
+  name: string;
+  image: string; // Ensure this is a base64 string or a valid image URL
+  expertise: string;
+}
+
 @Component({
   selector: 'app-tutor-list',
   templateUrl: './tutor-list.component.html',
-  styleUrl: './tutor-list.component.css'
+  styleUrls: ['./tutor-list.component.css']
 })
-export class TutorListComponent implements OnInit{
+export class TutorListComponent implements OnInit {
 
+  tutorList: Tutor[] = [];
 
-  imageData: string | ArrayBuffer;
-
-  constructor(private http: HttpClient) { }
+  constructor(private trs: TutorRegistrationService) { }
 
   ngOnInit(): void {
-    this.getImageFromBackend();
-  }
-
-  getImageFromBackend() {
-    // Make a GET request to your backend API to fetch the image data
-    this.http.get('http://localhost:5555/api/tutors/register', { responseType: 'blob' })
-      .subscribe((data: Blob) => {
-        // Convert the Blob data to base64 string
-        const reader = new FileReader();
-        reader.readAsDataURL(data);
-        reader.onloadend = () => {
-          this.imageData = reader.result;
-        };
-      });
+    this.trs.getTutors().subscribe((data: any[]) => {
+      this.tutorList = data.map(tutor => ({
+        name: tutor[0],
+        image: tutor[3],
+        expertise: tutor[2]
+      }));
+      console.log(this.tutorList);
+    });
   }
 }

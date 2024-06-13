@@ -8,6 +8,7 @@ import { TutorRegistrationService } from '../../../services/tutor-registration.s
   styleUrl: './tutor-registration.component.css'
 })
 export class TutorRegistrationComponent {
+  registrationForm: FormGroup;
 
   files: { [key: string]: File } = {
     resume: null,
@@ -17,6 +18,12 @@ export class TutorRegistrationComponent {
   };
 
   constructor(private fb: FormBuilder, private trs: TutorRegistrationService) {
+    this.registrationForm = this.fb.group({
+      maths: false,
+      physics: false,
+      chemistry: false,
+      social: false
+    });
 
    }
   
@@ -25,19 +32,28 @@ export class TutorRegistrationComponent {
   }
 
   onSubmit() {
-    this.trs.uploadFiles(this.files).subscribe(
-      response => {
-        console.log('Files successfully uploaded:', response);
-      },
-      error => {
-        console.error('Error uploading files:', error);
-      }
-    );
-  }
 
-
-
-
+    const formData = new FormData();
+    const selectedSubjects=this.registrationForm.value;
+    formData.append('maths', selectedSubjects.maths?'false':'true')
+    formData.append('physics', selectedSubjects.physics?'false':'true');
+    formData.append('chemistry',selectedSubjects.chemistry?'false':'true');
+    formData.append('social', selectedSubjects.social?'false':'true');
+    
+ console.log(formData);
+  this.trs.uploadFiles(this.files,formData).subscribe(
+    response => {
+      
+      console.log('After the subject is : ' ,formData.get('maths'),formData.get('physics'),formData.get('chemistry'),formData.get('social'))
+      console.log('Files successfully uploaded:', response);
+      
+    },
+    error => {
+      console.error('Error uploading files:', error);
+    }
+  );
+  
+}
   }
 
 

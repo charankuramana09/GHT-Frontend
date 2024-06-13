@@ -32,38 +32,40 @@ setForm2Data(data: any) {
 
 
 
-uploadFiles(files: { [key: string]: any }): Observable<any> {
-  const formData: FormData = new FormData();
+uploadFiles(files: { [key: string]: any },formdata:FormData): Observable<any> {
+  console.log('inside the service : ',formdata.get('maths'));
+  // const formData: FormData = new FormData();
 
   // Append each file to the FormData object
   for (const key in files) {
     if (files.hasOwnProperty(key) && files[key]) {
-      formData.append(key, files[key], files[key].name);
+      formdata.append(key, files[key], files[key].name);
     }
   }
 
   let params = new HttpParams();
-    for (const key in this.form1Data) {
-  
-      if (this.form1Data.hasOwnProperty(key)) {
-        params = params.append(key, this.form1Data[key]);
-        console.log("params", params.toString());
-      }
+
+  for (const key in this.form1Data) {
+    if (this.form1Data.hasOwnProperty(key)) {
+      params = params.append(key, this.form1Data[key]);
+      console.log("params", params.toString());
     }
+  }
 
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'multipart/form-data');
+  // No need to set Content-Type header manually for FormData
+  const headers = new HttpHeaders();
 
-  return this.http.post<any>(this.uploadUrl, formData, { params, headers,
+  return this.http.post<any>(this.uploadUrl, formdata, {
+    params: params,
+    headers: headers,
     reportProgress: true,
-    observe: 'events'
-   })
+    observe: 'events',
+   
+  })
 
     .pipe(
       catchError(this.handleError)
     );
-
-  
 }
 
 private handleError(error: HttpErrorResponse) {
@@ -121,7 +123,11 @@ deleteStudent(id: number): Observable<void> {
     }
   }
 
-
+//List Tutor
+private apiUrl = 'http://localhost:5555/api/tutors/fields'; // Replace with your backend URL
+getTutors(): Observable<any[]> {
+  return this.http.get<any[]>(this.apiUrl)
+}
 
 
 
