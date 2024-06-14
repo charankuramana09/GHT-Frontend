@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router'; // Import Router
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TutorRegistrationService } from '../../../services/tutor-registration.service';
 
 @Component({
@@ -18,12 +18,9 @@ export class TutorRegistrationComponent {
     photo: null
   };
 
-  constructor(private fb: FormBuilder, private trs: TutorRegistrationService, private router: Router) { // Inject Router
+  constructor(private fb: FormBuilder, private trs: TutorRegistrationService, private router: Router) {
     this.registrationForm = this.fb.group({
-      maths: false,
-      physics: false,
-      chemistry: false,
-      social: false
+      subjects: this.fb.array([]) // FormArray to store selected subjects
     });
   }
 
@@ -31,14 +28,22 @@ export class TutorRegistrationComponent {
     this.files[fileType] = event.target.files[0];
   }
 
+  onCheckboxChange(event: any) {
+    const subjectsArray = this.registrationForm.controls.subjects as FormArray;
+    if (event.target.checked) {
+      subjectsArray.push(this.fb.control(event.target.value));
+    } else {
+      const index = subjectsArray.controls.findIndex(x => x.value === event.target.value);
+      subjectsArray.removeAt(index);
+    }
+  }
+
   onSubmit() {
     const formData = new FormData();
-    const selectedSubjects = this.registrationForm.value;
-
-    formData.append('maths', selectedSubjects.maths ? 'true' : 'false');
-    formData.append('physics', selectedSubjects.physics ? 'true' : 'false');
-    formData.append('chemistry', selectedSubjects.chemistry ? 'true' : 'false');
-    formData.append('social', selectedSubjects.social ? 'true' : 'false');
+    const selectedSubjects = this.registrationForm.value.subjects;
+    
+    // Append selected subjects as an array
+    formData.append('subjects', JSON.stringify(selectedSubjects));
 
     // Append files to formData
     for (const fileType in this.files) {
@@ -50,15 +55,10 @@ export class TutorRegistrationComponent {
     this.trs.uploadFiles(this.files, formData).subscribe(
       response => {
         console.log('Files successfully uploaded:', response);
-        console.log('Selected subjects:', {
-          maths: formData.get('maths'),
-          physics: formData.get('physics'),
-          chemistry: formData.get('chemistry'),
-          social: formData.get('social')
-        });
+        console.log('Selected subjects:', formData.get('subjects'));
 
         // Navigate to login page after successful registration
-        this.router.navigate(['/login']); // Add this line for navigation
+        this.router.navigate(['/login']);
       },
       error => {
         console.error('Error uploading files:', error);
