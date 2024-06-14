@@ -1,35 +1,38 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { StudentDashboardService } from '../../services/student-dashboard.service';
-import { ServicesService } from '../../services.service'; 
+
 @Component({
   selector: 'app-student-login',
   templateUrl: './student-login.component.html',
   styleUrls: ['./student-login.component.css']
 })
 export class StudentLoginComponent {
-
   email: string = '';
   password: string = '';
-  userType: string = 'tutor';
+  userType: string = 'tutor'; // Default to 'tutor'
   user = { email: '', password: '' };
   message: string;
-  constructor(private service: StudentDashboardService,private router: Router) {}
+
+  constructor(private service: StudentDashboardService, private router: Router) {}
+
   onSubmit(): void {
-    this.service.login(this.user).subscribe(
+    this.service.login(this.user, this.userType).subscribe(
       response => {
-        this.message = response;
         console.log(response);
         if (response === 'Login successful') {
-          this.router.navigate(['/student-dashboard']);
-              }
+          if (this.userType === 'student') {
+            this.router.navigate(['/student-dashboard']);
+          } else if (this.userType === 'tutor') {
+            this.router.navigate(['/tutor-dashboard']);
+          }
+        } else {
+          this.message = 'Login failed';
+        }
       },
       error => {
         this.message = 'Login failed';
       }
     );
   }
-
-
 }

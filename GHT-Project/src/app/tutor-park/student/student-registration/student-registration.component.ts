@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router'; // Import Router
 import { TutorRegistrationService } from '../../../services/tutor-registration.service';
 
 @Component({
   selector: 'app-student-registration',
   templateUrl: './student-registration.component.html',
-  styleUrl: './student-registration.component.css'
+  styleUrls: ['./student-registration.component.css'] // Note the change from styleUrl to styleUrls
 })
-export class StudentRegistrationComponent {
+export class StudentRegistrationComponent implements OnInit {
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder,private trs: TutorRegistrationService) { }
+  constructor(
+    private fb: FormBuilder,
+    private trs: TutorRegistrationService,
+    private router: Router // Inject Router
+  ) { }
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -41,15 +46,18 @@ export class StudentRegistrationComponent {
 
   onSubmit() {
     if (this.registrationForm.valid) {
-      this.trs.createStudent(this.registrationForm.value).subscribe(data => {
-        console.log(data);
-      }, error => {
-        console.log(error);
-      });
+      this.trs.createStudent(this.registrationForm.value).subscribe(
+        data => {
+          console.log(data);
+          
+          this.router.navigate(['/login']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
     } else {
       console.log('Form is invalid');
     }
   }
-
 }
-

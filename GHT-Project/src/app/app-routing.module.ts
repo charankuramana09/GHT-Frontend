@@ -11,6 +11,7 @@ import { TutorParkComponent } from './tutor-park/tutor-park.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { TutorListComponent } from './components/tutor-list/tutor-list.component';
 import { StudentDashboardProfileComponent } from './components/student-dashboard-profile/student-dashboard-profile.component';
+import { StudentLoginComponent } from './components/student-login/student-login.component';
 
 const routes: Routes = [
  
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'student-dashboard', component: StudentDashboardProfileComponent },
   { path: 'tutor-park', component: TutorParkComponent },
   { path: 'tutor', component: TutorListComponent },
+  { path: 'login',component:StudentLoginComponent}
 
 
 

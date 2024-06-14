@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class StudentDashboardService {
 
-
   private studentService = 'http://localhost:5555/api';
-
+  
   constructor(private http: HttpClient)  { }
 
+  // Existing methods for students and payments
   getStudents(): Observable<any> {
     return this.http.get(`${this.studentService}/studentdashboard`);
   }
@@ -28,10 +28,10 @@ export class StudentDashboardService {
     return this.http.post(`${this.studentService}/payments`, payments);
   }
 
-
-   //login
-   login(user: any): Observable<any> {
-    return this.http.post(`${this.studentService}/students/login`, user, { responseType: 'text' });
+  // Modified login method to accept user type and redirect accordingly
+  login(user: any, userType: string): Observable<any> {
+    const endpoint = userType === 'tutor' ? '/tutors/login' : '/students/login';
+    return this.http.post(`${this.studentService}${endpoint}`, user, { responseType: 'text' });
   }
 
 }
