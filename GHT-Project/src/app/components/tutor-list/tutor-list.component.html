@@ -9,13 +9,18 @@
     </div>
     <div class="row">
       <div class="col-md-6 col-lg-3 text-center team mb-5" *ngFor="let tutor of tutorList">
-        <div class="position-relative overflow-hidden mb-4 rounded-circle" style="width: 150px; height: 150px; margin: auto;">
-          <img [src]="'data:image/jpeg;base64,' + tutor.image" alt="{{ tutor.name }}'s image" class="tutor-image rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
-          <div class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute" style="top: 0; left: 0; background: rgba(0, 0, 0, 0.5); opacity: 0; transition: opacity 0.3s;">
-            <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-twitter"></i></a>
-            <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-facebook-f"></i></a>
-            <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-linkedin-in"></i></a>
+        <div class="position-relative overflow-hidden mb-4 rounded-circle tutor-container" style="width: 150px; height: 150px; margin: auto;">
+          <a>
+            <img [src]="'data:image/jpeg;base64,' + tutor.image" alt="{{ tutor.name }}'s image" class="tutor-image rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
+          </a> 
+          <div class="overlay d-flex align-items-center justify-content-center w-100 h-100 position-absolute" style="top: 0; left: 0;">
+            <!-- <a   class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px"><i class="fab fa-twitter"></i></a>
+            <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px"><i class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px"><i class="fab fa-linkedin-in"></i></a> -->
+            <a routerLink="/public-tutor" class="btn btn-outline-light text-center p-2 ">Click me</a>
           </div>
+      
+
         </div>
         <h4>{{ tutor.name }}</h4>
         <i>Expert in: {{ tutor.expertise }}</i>

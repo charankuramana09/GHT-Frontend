@@ -12,6 +12,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { TutorListComponent } from './components/tutor-list/tutor-list.component';
 import { StudentDashboardProfileComponent } from './components/student-dashboard-profile/student-dashboard-profile.component';
 import { StudentLoginComponent } from './components/student-login/student-login.component';
+import { PublicTutorDashboardComponent } from './components/public-tutor-dashboard/public-tutor-dashboard.component';
 
 const routes: Routes = [
  
@@ -22,8 +23,8 @@ const routes: Routes = [
   { path: 'student-dashboard', component: StudentDashboardProfileComponent },
   { path: 'tutor-park', component: TutorParkComponent },
   { path: 'tutor', component: TutorListComponent },
-  { path: 'login',component:StudentLoginComponent}
-
+  { path: 'login',component:StudentLoginComponent},
+  {path:'public-tutor', component:PublicTutorDashboardComponent}
 
 
 ];
