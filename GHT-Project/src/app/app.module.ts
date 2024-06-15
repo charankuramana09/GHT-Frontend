@@ -32,6 +32,8 @@ import { DemoDialogComponent } from './components/demo-dialog/demo-dialog.compon
 import { PublicTutorDashboardComponent } from './components/public-tutor-dashboard/public-tutor-dashboard.component';
 
 
+// Import FontAwesomeModule
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 const appRouting: Routes =[
@@ -40,6 +42,7 @@ const appRouting: Routes =[
  { path: 'student', component: StudentDashboardProfileComponent},
  {path: 'login' , component: StudentLoginComponent},
  {path: 'classes', component:ClassesComponent},
+
 ]
 
 
@@ -79,6 +82,7 @@ const appRouting: Routes =[
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    FontAwesomeModule,
     
 
    
@@ -89,4 +93,6 @@ const appRouting: Routes =[
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+}

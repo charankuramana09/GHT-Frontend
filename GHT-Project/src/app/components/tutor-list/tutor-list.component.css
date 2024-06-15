@@ -51,3 +51,27 @@
     background: #fff;
     color: #000;
 }
+
+
+.tutor-container {
+    position: relative;
+  }
+  
+  .tutor-image {
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .overlay {
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .tutor-container:hover .tutor-image {
+    opacity: 0.7;
+  }
+  
+  .tutor-container:hover .overlay {
+    opacity: 1;
+  }
+  

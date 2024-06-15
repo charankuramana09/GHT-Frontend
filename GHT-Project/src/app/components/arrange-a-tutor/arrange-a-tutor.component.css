@@ -7,7 +7,8 @@
 
 /* Style the card header */
 .card-header {
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid ;
+    background-color: #00394f;
 }
 
 /* Add some spacing between form groups */
@@ -66,7 +67,19 @@
 }
 
 /* Add animation to the form card on hover */
-.card:hover {
+/* .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+} */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: 0.5rem;
+  font-family: "Handlee", cursive;
+  font-weight: bold;
+  line-height: 1.2;
+  color: #00394f;
 }
+h1, .h1 {
+    font-size: 2.5rem;
+}
+
