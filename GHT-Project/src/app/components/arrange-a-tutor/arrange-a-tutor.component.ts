@@ -29,8 +29,8 @@ export class ArrangeATutorComponent implements OnInit {
 
   onSubjectChange(subject: string) {
     if (subject) {
-      this.http.get(`http://localhost:5555/api/tutors/by-subject?subject=${subject}`)
-        .subscribe((data: any) => {
+      this.http.get<any[]>(`http://localhost:5555/api/tutors/by-subject?subject=${subject}`)
+        .subscribe((data: any[]) => {
           this.availableTutors = data;
         }, error => {
           console.error('Error fetching tutors', error);

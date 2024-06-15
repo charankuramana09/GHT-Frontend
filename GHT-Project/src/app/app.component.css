@@ -1,0 +1,32 @@
+/* Responsive adjustments */
+
+/* Extra small devices (phones, 576px and down) */
+@media (max-width: 576px) {
+    /* Adjustments for small screens */
+  }
+  
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) {
+    /* Adjustments for small screens */
+  }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    /* Adjustments for medium screens */
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    /* Adjustments for large screens */
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    /* Adjustments for extra large screens */
+  }
+  
+  /* Adjustments for widescreen monitors and above (1920px and up) */
+  @media (min-width: 1920px) {
+    /* Adjustments for widescreen monitors and larger screens */
+  }
+  
