@@ -1,17 +1,24 @@
 <div class="container-fluid bg-light position-relative shadow">
   <nav class="navbar navbar-expand-lg bg-light navbar-light py-1">
-    <a href="" class="navbar-brand font-weight-bold text-secondary " style="font-size: 50px">
-      <span class="text-primary">Tutor</span> <span class="text-success"> Park</span>
+    <a href="#" class="navbar-brand font-weight-bold text-secondary" style="font-size: 50px">
+      <span class="text-primary">Tutor</span> <span class="text-success">Park</span>
     </a>
-    <div class="collapse navbar-collapse">
+
+    <!-- Hamburger Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
       <div class="navbar-nav mx-auto fs-6">
         <a routerLink="/home" class="nav-item nav-link" routerLinkActive="active">Home</a>
         <a routerLink="/tutor" class="nav-item nav-link" routerLinkActive="active">Tutor</a>
         <a routerLink="/classes" class="nav-item nav-link" routerLinkActive="active">Classes</a>
-        <a routerLink="/dashboard" class="nav-item nav-link"> Dashboard</a>
+        <a routerLink="/dashboard" class="nav-item nav-link">Dashboard</a>
         <!-- <a routerLink="/tutor-dashboard" class="nav-item nav-link">Tutor Dashboard</a> -->
       </div>
     </div>
-    <a routerLink="login" class="rounded-pill btn btn-secondary py-2 px-3 fs-6 login">LOGIN</a>
+    <a routerLink="/login" class="rounded-pill btn btn-secondary py-2 px-3 fs-6 login">LOGIN</a>
   </nav>
 </div>
