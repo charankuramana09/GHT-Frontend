@@ -1,9 +1,10 @@
-<!-- Student Registration Form -->
+
+
 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="form-container student-registration">
   <!-- Personal Information Component -->
   <app-personal-registration></app-personal-registration>
 
-  <h2>Additional Details After Registration</h2>
+  <h2 class="m-3">Additional Details After Registration</h2>
   <div class="form-group">
     <label for="board">Select Board:</label>
     <select id="board" formControlName="board" class="form-control">
@@ -80,5 +81,6 @@
     <input id="parentAddress" type="text" formControlName="parentAddress" class="form-control">
   </div>
 
-  <button type="submit" class="submit-button">Submit</button>
+  <button type="submit" class=" rounded-pill submit-button">Submit</button>
 </form>
+
