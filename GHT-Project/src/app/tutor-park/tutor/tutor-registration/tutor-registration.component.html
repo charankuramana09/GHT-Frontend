@@ -1,29 +1,32 @@
-
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" [formGroup]="registrationForm">
   
   <!-- personal information -->
-  <app-personal-registration> </app-personal-registration>
-  
-  <!-- Checkboxes for subjects -->
-  <div>
-    <label>
-      <input type="checkbox" formControlName="maths" />
-      Maths
-    </label>
-    <label>
-      <input type="checkbox" formControlName="physics" />
-      Physics
-    </label>
-    <label>
-      <input type="checkbox" formControlName="chemistry" />
-      Chemistry
-    </label>
-    <label>
-      <input type="checkbox" formControlName="social" />
-      Social
-    </label>
+  <app-personal-registration></app-personal-registration>
+
+  <!-- Expert in Subjects Section -->
+  <div class="form-group">
+    <label>Expert in Subjects:</label>
+    <div class="checkbox-group">
+      <label>
+        <input type="checkbox" formArrayName="subjects" (change)="onCheckboxChange($event)" value="Maths">
+        Maths
+      </label>
+      <label>
+        <input type="checkbox" formArrayName="subjects" (change)="onCheckboxChange($event)" value="Physics">
+        Physics
+      </label>
+      <label>
+        <input type="checkbox" formArrayName="subjects" (change)="onCheckboxChange($event)" value="Chemistry">
+        Chemistry
+      </label>
+      <label>
+        <input type="checkbox" formArrayName="subjects" (change)="onCheckboxChange($event)" value="Social">
+        Social
+      </label>
+    </div>
   </div>
 
+  <!-- File Inputs -->
   <div>
     <label for="resume">Resume:</label>
     <input type="file" id="resume" (change)="onFileChange($event, 'resume')" accept=".pdf, .docx, .jpeg, .png">
@@ -40,6 +43,7 @@
     <label for="photo">Photo:</label>
     <input type="file" id="photo" (change)="onFileChange($event, 'photo')" accept=".pdf, .docx, .jpeg, .png">
   </div>
+
+  <!-- Submit button -->
   <button type="submit">Submit</button>
 </form>
-
