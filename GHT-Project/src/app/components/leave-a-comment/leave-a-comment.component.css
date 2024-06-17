@@ -145,13 +145,12 @@ body {
     color: red;
   }
   
-  /* Adjust specific fields */
   #title,
   #firstName,
   #lastName,
   #location,
   #subjects {
-    width: calc(100% - 22px); /* Adjusting for padding and border */
+    width: calc(100% - 22px); 
   }
   
   
