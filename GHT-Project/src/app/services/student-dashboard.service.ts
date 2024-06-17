@@ -28,10 +28,17 @@ export class StudentDashboardService {
     return this.http.post(`${this.studentService}/payments`, payments);
   }
 
-  // Modified login method to accept user type and redirect accordingly
+  // Updated login method to return full user details
+  // Previous: return this.http.post(`${this.studentService}${endpoint}`, user, { responseType: 'text' });
+  // Updated: return this.http.post(`${this.studentService}${endpoint}`, user);
   login(user: any, userType: string): Observable<any> {
     const endpoint = userType === 'tutor' ? '/tutors/login' : '/students/login';
-    return this.http.post(`${this.studentService}${endpoint}`, user, { responseType: 'text' });
+    return this.http.post(`${this.studentService}${endpoint}`, user);
   }
 
+  // New method to fetch student details by ID (if required)
+  getStudentById(id: number): Observable<any> {
+    return this.http.get(`${this.studentService}/students/${id}`);
+  }
+  
 }

@@ -13,13 +13,14 @@ import { TutorListComponent } from './components/tutor-list/tutor-list.component
 import { StudentDashboardProfileComponent } from './components/student-dashboard-profile/student-dashboard-profile.component';
 import { StudentLoginComponent } from './components/student-login/student-login.component';
 import { PublicTutorDashboardComponent } from './components/public-tutor-dashboard/public-tutor-dashboard.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 const routes: Routes = [
  
   { path: 'student-signup', component: StudentRegistrationComponent },
   { path: 'instructor-signup', component: TutorRegistrationComponent },
   { path: 'parent-signup', component: ParentRegistrationComponent },
   { path: 'tutor-dashboard', component: TutorDashboardComponent },
-  { path: 'student-dashboard', component: StudentDashboardProfileComponent },
+  { path: 'student-dashboard', component: DashboardComponent },
   { path: 'tutor-park', component: TutorParkComponent },
   { path: 'tutor', component: TutorListComponent },
   { path: 'login',component:StudentLoginComponent},
