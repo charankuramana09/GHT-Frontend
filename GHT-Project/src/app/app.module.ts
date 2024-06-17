@@ -30,7 +30,9 @@ import { DataDialogComponent } from './components/data-dialog/data-dialog.compon
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DemoDialogComponent } from './components/demo-dialog/demo-dialog.component';
 import { PublicTutorDashboardComponent } from './components/public-tutor-dashboard/public-tutor-dashboard.component';
+import { LeaveACommentComponent } from './components/leave-a-comment/leave-a-comment.component';
 
+import { CommentService } from './comment.service';
 const appRouting: Routes =[
   {path:'home', component:HomePageComponent},
  {path : 'tutor', component: TutorDashboardComponent},
@@ -68,6 +70,7 @@ const appRouting: Routes =[
     DataDialogComponent,
     DemoDialogComponent,
     PublicTutorDashboardComponent,
+    LeaveACommentComponent,
 
   ],
   imports: [
@@ -83,7 +86,8 @@ const appRouting: Routes =[
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    CommentService
   ],
   bootstrap: [AppComponent]
 })
