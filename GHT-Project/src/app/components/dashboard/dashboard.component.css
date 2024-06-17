@@ -1,0 +1,57 @@
+/* Ensure you include these styles in your CSS file */
+
+.profile_img {
+    border-radius: 50%;
+    height: 150px; /* Adjust height as needed */
+    width: 150px;  /* Adjust width as needed */
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid white; /* Adds a white border to the image */
+  }
+  
+  .card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .text-white {
+    color: #fff;
+  }
+  
+  .student-profile .card {
+    margin-bottom: 30px;
+  }
+  
+  .student-profile .card-header {
+    background-color: #17a2b8;
+    border-bottom: none;
+  }
+  
+  .student-profile .card-body {
+    background-color: #138496;
+    padding: 20px;
+  }
+  
+  .student-profile .table th,
+  .student-profile .table td {
+    vertical-align: middle;
+  }
+  
+  .student-profile .sub-expert h2 {
+    color: #138496;
+  }
+  
+  .student-profile .list-group-item {
+    background-color: #f8f9fa;
+  }
+  
+  .student-profile .list-group-item a {
+    color: #17a2b8;
+    text-decoration: none;
+  }
+  
+  .student-profile .list-group-item a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,17 +1,113 @@
-<div class="dashboard-container">
-    <h2>Student Dashboard</h2>
-  
-    <div *ngIf="student">
-      <h3>Welcome, {{ student.name }}</h3>
-      <p>Email: {{ student.email }}</p>
-      <p>Date of Birth: {{ student.dob }}</p>
-      <p>City: {{ student.city }}</p>
-      <p>Mobile No: {{ student.mobileNo }}</p>
-      <!-- Add more student details here as needed -->
+<div class="container py-5">
+  <h2 class="student-profile">Student Profile</h2>
+
+  <section>
+    <div class="rt-container">
+      <div class="col-rt-12">
+        <div class="Scriptcontent">
+
+          <!-- Student Profile -->
+          <div class="student-profile py-4">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="card shadow-sm bg-info">
+                    <div class="card-header text-center">
+                      <img class="profile_img" 
+                           [src]="student.image ? 'data:image/jpeg;base64,' + student.image : 'assets/img/user.jpg'" 
+                           alt="student dp">
+                      <h3 class="text-white">{{ student.name }}</h3>
+                    </div>
+
+                    <div class="card-body text-white">
+                      <p class="mb-0"><strong class="pr-1">Student ID:</strong>{{ student.id }}</p>
+                      <p class="mb-0"><strong class="pr-1">Mobile No:</strong>{{ student.mobileNo }}</p>
+                      <p class="mb-0"><strong class="pr-1">School:</strong>{{ student.school || 'N/A' }}</p>
+                    </div>
+                  </div>
+
+                  <div class="mb-5 sub-expert mt-3">
+                    <h2 class="mb-4">Classes Information</h2>
+                    <ul class="list-group list-group-flush">
+                      <!-- Example static data for classes, replace with dynamic data if available -->
+                      <li class="list-group-item d-flex justify-content-between align-items-center px-3 text-info">
+                        <a href="javascript:void(0)" class="text-info">Maths - Mahesh Konamoni</a>
+                        <span class="badge badge-primary badge-pill">150</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center px-3">
+                        <a href="javascript:void(0)" class="text-info">Science - Charan Kuramana</a>
+                        <span class="badge badge-primary badge-pill">131</span>
+                      </li>
+                      <!-- Add more subjects here -->
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col-lg-8">
+                  <div class="card shadow-sm">
+                    <div class="card-header bg-transparent border-0">
+                      <h2 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h2>
+                    </div>
+                    <div class="card-body pt-0">
+                      <table class="table table-bordered">
+                        <tr>
+                          <th width="30%">Email</th>
+                          <td width="2%">:</td>
+                          <td>{{ student.email || 'N/A' }}</td>
+                        </tr>
+                        <tr>
+                          <th width="30%">Gender</th>
+                          <td width="2%">:</td>
+                          <td>{{ student.gender || 'N/A' }}</td>
+                        </tr>
+                        <tr>
+                          <th width="30%">Father's Name</th>
+                          <td width="2%">:</td>
+                          <td>{{ student.fatherName || 'N/A' }}</td>
+                        </tr>
+                        <tr>
+                          <th width="30%">Father's Occupation</th>
+                          <td width="2%">:</td>
+                          <td>{{ student.fatherOccupation || 'N/A' }}</td>
+                        </tr>
+                        <tr>
+                          <th width="30%">Mother's Name</th>
+                          <td width="2%">:</td>
+                          <td>{{ student.motherName || 'N/A' }}</td>
+                        </tr>
+                        <tr>
+                          <th width="30%">Student's Email</th>
+                          <td width="2%">:</td>
+                          <td>{{ student.email || 'N/A' }}</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div style="height: 26px"></div>
+                  <div class="card shadow-sm">
+                    <div class="card-header bg-transparent border-0">
+                      <h2 class="mb-0"><i class="far fa-clone pr-1"></i>Other Information</h2>
+                    </div>
+                    <div class="card-body pt-0">
+                      <p class="text-dark">
+                        {{ student.otherInfo || 'No additional information provided.' }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div style="margin-right: 1900px; width: 850px; margin-left: -260px;">
+                  <app-arrange-a-tutor></app-arrange-a-tutor>
+                </div>
+                <app-leave-a-comment></app-leave-a-comment>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  
-    <div *ngIf="!student">
-      <p>No student data available.</p>
-    </div>
-  </div>
-  
+  </section>
+</div>
