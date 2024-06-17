@@ -1,6 +1,17 @@
-<div ng-if="isTutor">
-    <app-tutor-dashboard />
-</div>
-<div else>
-    <app-student-dashboard />
-</div>
+<div class="dashboard-container">
+    <h2>Student Dashboard</h2>
+  
+    <div *ngIf="student">
+      <h3>Welcome, {{ student.name }}</h3>
+      <p>Email: {{ student.email }}</p>
+      <p>Date of Birth: {{ student.dob }}</p>
+      <p>City: {{ student.city }}</p>
+      <p>Mobile No: {{ student.mobileNo }}</p>
+      <!-- Add more student details here as needed -->
+    </div>
+  
+    <div *ngIf="!student">
+      <p>No student data available.</p>
+    </div>
+  </div>
+  

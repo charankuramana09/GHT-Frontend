@@ -20,9 +20,10 @@ export class StudentLoginComponent {
     this.service.login(this.user, this.userType).subscribe(
       response => {
         console.log(response);
-        if (response === 'Login successful') {
+        if (response && response.id) {
           if (this.userType === 'student') {
-            this.router.navigate(['/student-dashboard']);
+            // Pass the student data to the dashboard
+            this.router.navigate(['/student-dashboard'], { state: { student: response } });
           } else if (this.userType === 'tutor') {
             this.router.navigate(['/tutor-dashboard']);
           }
