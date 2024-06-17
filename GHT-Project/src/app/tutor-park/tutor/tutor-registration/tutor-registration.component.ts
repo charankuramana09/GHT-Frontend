@@ -31,19 +31,25 @@ export class TutorRegistrationComponent {
   onCheckboxChange(event: any) {
     const subjectsArray = this.registrationForm.controls.subjects as FormArray;
     if (event.target.checked) {
+      // Add the new subject value directly
       subjectsArray.push(this.fb.control(event.target.value));
     } else {
+      // Find the index of the subject and remove it
       const index = subjectsArray.controls.findIndex(x => x.value === event.target.value);
-      subjectsArray.removeAt(index);
+      if (index >= 0) {
+        subjectsArray.removeAt(index);
+      }
     }
   }
 
   onSubmit() {
     const formData = new FormData();
     const selectedSubjects = this.registrationForm.value.subjects;
-    
-    // Append selected subjects as an array
-    formData.append('subjects', JSON.stringify(selectedSubjects));
+
+    // Append each selected subject directly
+    selectedSubjects.forEach((subject: string) => {
+      formData.append('subjects', subject);
+    });
 
     // Append files to formData
     for (const fileType in this.files) {
@@ -55,7 +61,7 @@ export class TutorRegistrationComponent {
     this.trs.uploadFiles(this.files, formData).subscribe(
       response => {
         console.log('Files successfully uploaded:', response);
-        console.log('Selected subjects:', formData.get('subjects'));
+        console.log('Selected subjects:', selectedSubjects);
 
         // Navigate to login page after successful registration
         this.router.navigate(['/login']);
