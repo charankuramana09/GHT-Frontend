@@ -3,6 +3,7 @@
   <!-- personal information -->
   <app-personal-registration></app-personal-registration>
 
+
   <!-- Expert in Subjects Section -->
   <div class="form-group">
     <label>Expert in Subjects:</label>
@@ -26,6 +27,7 @@
     </div>
   </div>
 
+
   <!-- File Inputs -->
   <div>
     <label for="resume">Resume:</label>
@@ -39,10 +41,12 @@
     <label for="addressProof">Address Proof:</label>
     <input type="file" id="addressProof" (change)="onFileChange($event, 'addressProof')" accept=".pdf, .docx, .jpeg, .png">
   </div>
+  
   <div>
     <label for="photo">Photo:</label>
     <input type="file" id="photo" (change)="onFileChange($event, 'photo')" accept=".pdf, .docx, .jpeg, .png">
   </div>
+
 
   <!-- Submit button -->
   <button type="submit">Submit</button>

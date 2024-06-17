@@ -9,6 +9,7 @@ import { TutorRegistrationService } from '../../services/tutor-registration.serv
 })
 export class PersonalRegistrationComponent {
   registrationForm: FormGroup;
+  Registration: boolean = false;
 
   constructor(private fb: FormBuilder,private trs: TutorRegistrationService) {}
 

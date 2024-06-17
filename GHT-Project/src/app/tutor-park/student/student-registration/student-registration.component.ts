@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router'; // Import Router
 import { TutorRegistrationService } from '../../../services/tutor-registration.service';
+import { File } from 'node:buffer';
 
 @Component({
   selector: 'app-student-registration',
@@ -35,18 +36,30 @@ export class StudentRegistrationComponent implements OnInit {
       motherOccupation: ['', Validators.required],
       motherPhone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       motherEmail: ['', [Validators.required, Validators.email]],
-      parentAddress: ['', Validators.required]
+      parentAddress: ['', Validators.required],
+      image: [null]
     });
 
     this.registrationForm.valueChanges.subscribe(value => {
       this.trs.setForm2Data(value);
       console.log(value);
     });
+    
   }
 
+  selectedImage: File | null = null;
+  
+  onImageChange(event: any) {
+    this.selectedImage = <File>event.target.files[0];
+  }
+
+
   onSubmit() {
+
+
     if (this.registrationForm.valid) {
-      this.trs.createStudent(this.registrationForm.value).subscribe(
+      this.trs.createStudent(this.registrationForm.value,this.selectedImage
+      ).subscribe(
         data => {
           console.log(data);
           
