@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import {  catchError, throwError } from 'rxjs';
 import { TutorDetails } from '../models/tutor-details.model';
-import { File } from 'node:buffer';
-import { fileURLToPath } from 'node:url';
 import { type } from 'node:os';
 import { Student } from '../tutor-park/student/student.model';
 import { Observable, of } from 'rxjs';
@@ -82,13 +80,27 @@ private handleError(error: HttpErrorResponse) {
 
 //Student Service
 
-private baseUrl = 'http://localhost:5555/api/students/save';
+private baseUrl = 'http://localhost:5555/api/students';
 
 
-createStudent(data: any): Observable<Object> {
-  const combinedData = { ...this.form1Data, ...this.form2Data };
-  return this.http.post(`${this.baseUrl}`, combinedData);
+// createStudent(data: any, image: File): Observable<Object> {
+//   const combinedData = { ...this.form1Data, ...this.form2Data };
+
+
+//   return this.http.post(`${this.baseUrl}`, combinedData);
+// }
+
+createStudent(data: any, image: any): Observable<Object> {
+  const combinedData = { ...this.form1Data, ...this.form2Data, ...data };
+  const formData = new FormData();
+  
+  formData.append('image',  image, image.name);
+  formData.append('student', new Blob([JSON.stringify(combinedData)], { type: 'application/json' }));
+
+  return this.http.post(`${this.baseUrl}/save`, formData);
 }
+
+
 
 
  // Get a list of all students

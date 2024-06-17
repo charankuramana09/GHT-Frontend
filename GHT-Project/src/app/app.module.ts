@@ -31,11 +31,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DemoDialogComponent } from './components/demo-dialog/demo-dialog.component';
 import { PublicTutorDashboardComponent } from './components/public-tutor-dashboard/public-tutor-dashboard.component';
 
-
-// Import FontAwesomeModule
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
-
 const appRouting: Routes =[
   {path:'home', component:HomePageComponent},
  {path : 'tutor', component: TutorDashboardComponent},
@@ -82,7 +77,6 @@ const appRouting: Routes =[
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    FontAwesomeModule,
     
 
    

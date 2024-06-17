@@ -46,13 +46,11 @@ export class PublicTutorDashboardComponent {
     if (this.dashboardForm.valid) {
       const formValue = this.dashboardForm.value;
       console.log('Form submitted successfully', formValue);
-      // Handle form submission logic here
     }
   }
 
   payNow(): void {
     console.log('Pay Now clicked');
-    // Handle pay now logic here
   }
 
   loginChat(): void {

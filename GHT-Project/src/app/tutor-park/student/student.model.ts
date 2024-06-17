@@ -19,5 +19,6 @@ export interface Student {
     motherPhone: string;
     motherEmail: string;
     parentAddress: string;
+    image?:any;
   }
   
