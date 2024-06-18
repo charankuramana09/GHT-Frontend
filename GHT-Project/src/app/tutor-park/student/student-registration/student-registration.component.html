@@ -1,127 +1,152 @@
-
-
 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="form-container student-registration">
   <!-- Personal Information Component -->
   <app-personal-registration></app-personal-registration>
-
-  <h2 class="m-3">Additional Details After Registration</h2>
-  <div class="form-group">
-    <label for="board">Select Board:</label>
-    <select id="board" formControlName="board" class="form-control">
-      <option value="">Select</option>
-      <option value="CBSE">CBSE</option>
-      <option value="ICSE">ICSE</option>
-      <option value="State">State</option>
-    </select>
-    <div *ngIf="registrationForm.get('board').hasError('required') && registrationForm.get('board').touched" class="warning-message error-message">
-      Board is required
+  <div class="my-5 py-2">
+    <h2 class="m-3">Additional Details After Registration</h2>
+    <div class="form-group">
+      <label for="board">Select Board:</label>
+      <select id="board" formControlName="board" class="form-control">
+        <option value="">Select</option>
+        <option value="CBSE">CBSE</option>
+        <option value="ICSE">ICSE</option>
+        <option value="State">State</option>
+      </select>
+      <div *ngIf="registrationForm.get('board').hasError('required') && registrationForm.get('board').touched"
+        class="warning-message error-message">
+        Board is required
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="school">School:</label>
-    <input id="school" type="text" formControlName="school" class="form-control">
-    <div *ngIf="registrationForm.get('school').hasError('required') && registrationForm.get('school').touched" class="warning-message error-message">
-      School Name is required
+    <div class="form-group">
+      <label for="school">School:</label>
+      <input id="school" type="text" formControlName="school" class="form-control">
+      <div *ngIf="registrationForm.get('school').hasError('required') && registrationForm.get('school').touched"
+        class="warning-message error-message">
+        School Name is required
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="class">Class:</label>
-    <input id="class" type="text" formControlName="class" class="form-control">
-    <div *ngIf="registrationForm.get('class').hasError('required') && registrationForm.get('class').touched" class="warning-message error-message">
-      Class is required
+    <div class="form-group">
+      <label for="class">Class:</label>
+      <input id="class" type="text" formControlName="class" class="form-control">
+      <div *ngIf="registrationForm.get('class').hasError('required') && registrationForm.get('class').touched"
+        class="warning-message error-message">
+        Class is required
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="preferredTimings">Preferred Timings:</label>
-    <input id="preferredTimings" type="text" formControlName="preferredTimings" class="form-control">
-    <div *ngIf="registrationForm.get('preferredTimings').hasError('required') && registrationForm.get('preferredTimings').touched" class="warning-message error-message">
-      Preferred Timings is required
+    <div class=" text-align-center ">
+      <label for="preferredTimings" class="px-2 preferred-Timings">Preferred Timings:</label>
+      <input id="preferredTimings" type="checkbox" formControlName="preferredTimings" value="time-1">
+      <label for="preferredTimings" class="p-2">6:00 am to 9:00 am</label>
+      <input id="preferredTimings" type="checkbox" formControlName="preferredTimings" value="time-2">
+      <label for="preferredTimings" class="p-2">4:00 pm to 6:00 pm</label>
+      <input id="preferredTimings" type="checkbox" formControlName="preferredTimings" value="time-3">
+      <label for="preferredTimings" class="p-2">6:00 pm to 9:00 pm</label>
+      <div
+        *ngIf="registrationForm.get('preferredTimings').hasError('required') && registrationForm.get('preferredTimings').touched"
+        class="warning-message error-message">
+        Preferred Timings is required
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="daysPerWeek">Number of Days in a Week:</label>
-    <input id="daysPerWeek" type="number" formControlName="daysPerWeek" class="form-control">
-    <div *ngIf="registrationForm.get('daysPerWeek').hasError('required') && registrationForm.get('daysPerWeek').touched" class="warning-message error-message">
-      Number of Days is required
+    <div class="form-group">
+      <label for="daysPerWeek">Number of Days in a Week:</label>
+      <input id="daysPerWeek" type="number" formControlName="daysPerWeek" class="form-control">
+      <div
+        *ngIf="registrationForm.get('daysPerWeek').hasError('required') && registrationForm.get('daysPerWeek').touched"
+        class="warning-message error-message">
+        Number of Days is required
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="sessionDuration">Duration of Each Session (mins):</label>
-    <input id="sessionDuration" type="number" formControlName="sessionDuration" class="form-control">
-    <div *ngIf="registrationForm.get('sessionDuration').hasError('required') && registrationForm.get('sessionDuration').touched" class="warning-message error-message">
-      Duration of Session is required
+    <div class="form-group">
+      <label for="sessionDuration">Duration of Each Session (mins):</label>
+      <input id="sessionDuration" type="number" formControlName="sessionDuration" class="form-control">
+      <div
+        *ngIf="registrationForm.get('sessionDuration').hasError('required') && registrationForm.get('sessionDuration').touched"
+        class="warning-message error-message">
+        Duration of Session is required
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="addressLine1">Address Line 1:</label>
-    <input id="addressLine1" type="text" formControlName="addressLine1" class="form-control">
-    <div *ngIf="registrationForm.get('addressLine1').hasError('required') && registrationForm.get('addressLine1').touched" class="warning-message error-message">
-      address is required
+    <div class="form-group">
+      <label for="addressLine1">Address Line 1:</label>
+      <input id="addressLine1" type="text" formControlName="addressLine1" class="form-control">
+      <div
+        *ngIf="registrationForm.get('addressLine1').hasError('required') && registrationForm.get('addressLine1').touched"
+        class="warning-message error-message">
+        address is required
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="addressLine2">Address Line 2:</label>
-    <input id="addressLine2" type="text" formControlName="addressLine2" class="form-control">
-  </div>
-
-  <h2>Parent/Guardian Information</h2>
-  <div class="form-group">
-    <label for="fatherName">Father’s Name:</label>
-    <input id="fatherName" type="text" formControlName="fatherName" class="form-control">
-    <div *ngIf="registrationForm.get('fatherName').hasError('required') && registrationForm.get('fatherName').touched" class="warning-message error-message">
-      Father Name is required
+    <div class="form-group">
+      <label for="addressLine2">Address Line 2:</label>
+      <input id="addressLine2" type="text" formControlName="addressLine2" class="form-control">
     </div>
-  </div>
-  <div class="form-group">
-    <label for="fatherOccupation">Occupation:</label>
-    <input id="fatherOccupation" type="text" formControlName="fatherOccupation" class="form-control">
-    <div *ngIf="registrationForm.get('fatherOccupation').hasError('required') && registrationForm.get('fatherOccupation').touched" class="warning-message error-message">
-      father Occupation is required
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="fatherPhone">Phone:</label>
-    <input id="fatherPhone" type="text" formControlName="fatherPhone" class="form-control">
-    <div *ngIf="registrationForm.get('fatherPhone').hasError('required') && registrationForm.get('fatherPhone').touched" class="warning-message error-message">
-      Phone No. is required
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="fatherEmail">Email:</label>
-    <input id="fatherEmail" type="email" formControlName="fatherEmail" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="motherName">Mother’s Name:</label>
-    <input id="motherName" type="text" formControlName="motherName" class="form-control">
-    <div *ngIf="registrationForm.get('motherName').hasError('required') && registrationForm.get('motherName').touched" class="warning-message error-message">
-      Mother Name is required
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="motherOccupation">Occupation:</label>
-    <input id="motherOccupation" type="text" formControlName="motherOccupation" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="motherPhone">Phone:</label>
-    <input id="motherPhone" type="text" formControlName="motherPhone" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="motherEmail">Email:</label>
-    <input id="motherEmail" type="email" formControlName="motherEmail" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="parentAddress">Address:</label>
-    <input id="parentAddress" type="text" formControlName="parentAddress" class="form-control">
   </div>
 
-  <div>
-    <label for="image">Image:</label>
-    <input type="file" id="image" (change)="onImageChange($event)">
-    <div *ngIf="registrationForm.get('image').hasError('required') && registrationForm.get('image').touched" class="warning-message error-message">
-      Image is required
+  <div class="my-5 py-2">
+
+
+    <h2>Parent/Guardian Information</h2>
+    <div class="form-group">
+      <label for="fatherName">Father’s Name:</label>
+      <input id="fatherName" type="text" formControlName="fatherName" class="form-control">
+      <div *ngIf="registrationForm.get('fatherName').hasError('required') && registrationForm.get('fatherName').touched"
+        class="warning-message error-message">
+        Father Name is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="fatherOccupation">Occupation:</label>
+      <input id="fatherOccupation" type="text" formControlName="fatherOccupation" class="form-control">
+      <div
+        *ngIf="registrationForm.get('fatherOccupation').hasError('required') && registrationForm.get('fatherOccupation').touched"
+        class="warning-message error-message">
+        father Occupation is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="fatherPhone">Phone:</label>
+      <input id="fatherPhone" type="text" formControlName="fatherPhone" class="form-control">
+      <div
+        *ngIf="registrationForm.get('fatherPhone').hasError('required') && registrationForm.get('fatherPhone').touched"
+        class="warning-message error-message">
+        Phone No. is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="fatherEmail">Email:</label>
+      <input id="fatherEmail" type="email" formControlName="fatherEmail" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="motherName">Mother’s Name:</label>
+      <input id="motherName" type="text" formControlName="motherName" class="form-control">
+      <div *ngIf="registrationForm.get('motherName').hasError('required') && registrationForm.get('motherName').touched"
+        class="warning-message error-message">
+        Mother Name is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="motherOccupation">Occupation:</label>
+      <input id="motherOccupation" type="text" formControlName="motherOccupation" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="motherPhone">Phone:</label>
+      <input id="motherPhone" type="text" formControlName="motherPhone" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="motherEmail">Email:</label>
+      <input id="motherEmail" type="email" formControlName="motherEmail" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="parentAddress">Address:</label>
+      <input id="parentAddress" type="text" formControlName="parentAddress" class="form-control">
+    </div>
+
+    <div>
+      <label for="image">Image:</label>
+      <input type="file" id="image" (change)="onImageChange($event)">
+      <div *ngIf="registrationForm.get('image').hasError('required') && registrationForm.get('image').touched"
+        class="warning-message error-message">
+        Image is required
+      </div>
     </div>
   </div>
 
   <button type="submit" class=" rounded-pill submit-button">Submit</button>
 </form>
-

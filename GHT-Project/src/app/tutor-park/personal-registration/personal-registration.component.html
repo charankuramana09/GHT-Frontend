@@ -67,7 +67,7 @@
     <label for="password">Password:</label>
     <input id="password" formControlName="password" type="password" class="form-control">
     <div *ngIf="registrationForm.get('password').hasError('required') && registrationForm.get('password').touched" class="warning-message error-message">
-      mobile No is required
+      Password is required
     </div>
   </div>
 
@@ -75,7 +75,7 @@
     <label for="confirmPassword">Confirm Password:</label>
     <input id="confirmPassword" formControlName="confirmPassword" type="password" class="form-control">
     <div *ngIf="registrationForm.get('confirmPassword').hasError('required') && registrationForm.get('confirmPassword').touched" class="warning-message error-message">
-      mobile No is required
+      Confirm Password is required
     </div>
   </div>
 
