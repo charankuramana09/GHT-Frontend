@@ -16,3 +16,7 @@ h1, .h1 {
 .warning-message{
   color: red;
 }
+
+.form-control.ng-invalid.ng-touched {
+  border-color: #e74c3c;
+}
