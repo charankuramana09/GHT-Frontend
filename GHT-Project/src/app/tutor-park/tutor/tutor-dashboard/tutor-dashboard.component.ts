@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataDialogComponent } from '../../../components/data-dialog/data-dialog.component';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tutor-dashboard',
@@ -61,7 +62,7 @@ export class TutorDashboardComponent {
   customTests = ['Custom Test 1', 'Custom Test 2', 'Custom Test 3'];
   messages = ['Message 1', 'Message 2', 'Message 3'];
 
-  constructor(private fb: FormBuilder,private http : HttpClient,private route: ActivatedRoute,private dialog: MatDialog) {
+  constructor(private fb: FormBuilder,private http : HttpClient,private route: ActivatedRoute,private dialog: MatDialog,private sanitizer: DomSanitizer,private router: Router) {
     this.dashboardForm = this.fb.group({
       title: ['', Validators.required],
       firstName: ['', Validators.required],
@@ -76,9 +77,21 @@ export class TutorDashboardComponent {
       testSubject: ['', Validators.required],
       testChapter: ['', Validators.required]
     });
+    const navigation = this.router.getCurrentNavigation();
+    this.tutor = navigation?.extras?.state?.['tutor'];
+  
+    if (this.tutor) {
+      console.log(this.tutor); // Check the tutor object
+      if (this.tutor.image) {
+        this.imageUrl = this.sanitizeImage(this.tutor.image);
+        console.log(this.imageUrl); // Check the generated URL
+      }
+    }
+
+
   }
 
-  ngOnInit(): void {}
+
 
   onSubmit(): void {
     if (this.dashboardForm.valid) {
@@ -120,4 +133,23 @@ displayData(): void {
 }
 
 
+tutor: any;
+imageUrl: SafeUrl | null = null;
+
+
+
+ngOnInit(): void {
+  if (!this.tutor) {
+    console.log('No tutor data available');
+  }
 }
+
+// Method to sanitize and create image URL
+sanitizeImage(imageData: string): SafeUrl {
+  const base64Image = `data:image/jpeg;base64,${imageData}`;
+  return this.sanitizer.bypassSecurityTrustUrl(base64Image);
+}
+}
+
+
+

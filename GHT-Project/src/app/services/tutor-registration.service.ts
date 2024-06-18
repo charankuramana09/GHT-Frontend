@@ -136,11 +136,21 @@ deleteStudent(id: number): Observable<void> {
   }
 
 //List Tutor
-private apiUrl = 'http://localhost:5555/api/tutors/fields'; // Replace with your backend URL
+private apiUrl = 'http://localhost:5555/api/tutors'; // Replace with your backend URL
 getTutors(): Observable<any[]> {
-  return this.http.get<any[]>(this.apiUrl)
+  return this.http.get<any[]>(`${this.apiUrl}/fields`)
 }
 
+
+
+getTutorByEmail(email: string): Observable<any> {
+  const url = `${this.apiUrl}/email/${email}`;
+  return this.http.get<any>(url).pipe(
+    catchError((error) => {
+      throw error;
+    })
+  );
+}
 
 
 }
