@@ -7,10 +7,12 @@
     <div class="col-lg-4 mt-5 mt-lg-0">
       <!-- Author Bio -->
       <div class="d-flex flex-column text-center bg-info rounded mb-5 py-5 px-4">
-        <img src="assets/img/user.jpg" class="img-fluid rounded-circle mx-auto mb-3" style="width: 100px" />
-        <h3 class="text-white mb-3 fs-5 fw-2"> Mahesh Konamoni</h3>
+        <img class="profile_img" 
+                           [src]="tutor.image ? 'data:image/jpeg;base64,' + tutor.image : 'assets/img/user.jpg'" 
+                           alt="tutor dp">
+        <h3 class="text-white mb-3 fs-5 fw-2">  {{tutor.name}} </h3>
         <p class="text-white m-0 fs-6">
-          Expert in <br> <br> Maths | Abacus | Science | IIT Subjects
+          Expert in <br> <br> {{ tutor.expertInClass }}
         </p>
       </div>
 

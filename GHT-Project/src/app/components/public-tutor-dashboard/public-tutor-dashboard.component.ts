@@ -1,9 +1,19 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { DataDialogComponent } from '../../components/data-dialog/data-dialog.component';
+import { TutorRegistrationService } from '../../services/tutor-registration.service';
+
+interface Tutor {
+  email:string;
+  name: string;
+  image: string; // Ensure this is a base64 string or a valid image URL
+  expertise: string;
+}
+
+
 
 @Component({
   selector: 'app-public-tutor-dashboard',
@@ -23,7 +33,7 @@ export class PublicTutorDashboardComponent {
   customTests = ['Custom Test 1', 'Custom Test 2', 'Custom Test 3'];
   messages = ['Message 1', 'Message 2', 'Message 3'];
 
-  constructor(private fb: FormBuilder,private http : HttpClient,private route: ActivatedRoute,private dialog: MatDialog) {
+  constructor(private fb: FormBuilder,private http : HttpClient,private route: ActivatedRoute,private dialog: MatDialog, private trs: TutorRegistrationService, private cdr: ChangeDetectorRef) {
     this.dashboardForm = this.fb.group({
       title: ['', Validators.required],
       firstName: ['', Validators.required],
@@ -40,7 +50,33 @@ export class PublicTutorDashboardComponent {
     });
   }
 
-  ngOnInit(): void {}
+ 
+
+  tutorList: Tutor[] = [];
+
+
+  ngOnInit(): void {
+    this.loadTutorData();
+    
+  }
+
+  async loadTutorData(): Promise<void> {
+    const email = this.route.snapshot.paramMap.get('email');
+    if (email) {
+      try {
+        const data = await this.trs.getTutorByEmail(email).toPromise();
+        this.tutorList = data.map(tutor => ({
+          name: tutor[1],
+          image: `data:image/jpeg;base64,${tutor[2]}`, // Assuming tutor[3] is the image string
+          expertise: tutor[3],
+          email: tutor[0],
+        }));
+      } catch (error) {
+        console.error('Error fetching tutor data:', error);
+      }
+    }
+  }
+
 
   onSubmit(): void {
     if (this.dashboardForm.valid) {
