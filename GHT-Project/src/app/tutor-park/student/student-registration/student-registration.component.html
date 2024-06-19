@@ -101,13 +101,20 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="fatherPhone">Phone:</label>
-      <input id="fatherPhone" type="text" formControlName="fatherPhone" class="form-control">
-      <div
-        *ngIf="registrationForm.get('fatherPhone').hasError('required') && registrationForm.get('fatherPhone').touched"
+      <label for="fatherPhone">Father's Phone:</label>
+      <input id="fatherPhone" type="text" formControlName="fatherPhone" class="form-control" placeholder="000 000 0000">
+      <div *ngIf="registrationForm.get('fatherPhone').errors?.required && registrationForm.get('fatherPhone').touched"
         class="warning-message error-message">
-        Phone No. is required
+        Phone Number is required
       </div>
+      <div *ngIf="registrationForm.get('fatherPhone').errors?.minlength && registrationForm.get('fatherPhone').touched"
+        class="warning-message error-message">
+        Phone Number must be 10 digits long
+      </div>
+      <div *ngIf="registrationForm.get('fatherPhone').errors?.maxlength && registrationForm.get('fatherPhone').touched"
+      class="warning-message error-message">
+      Phone Number must not be exceeds 10 digits 
+    </div>
     </div>
     <div class="form-group">
       <label for="fatherEmail">Email:</label>
@@ -126,8 +133,21 @@
       <input id="motherOccupation" type="text" formControlName="motherOccupation" class="form-control">
     </div>
     <div class="form-group">
-      <label for="motherPhone">Phone:</label>
+      <label for="motherPhone">Mother's Phone:</label>
       <input id="motherPhone" type="text" formControlName="motherPhone" class="form-control">
+      <div *ngIf="registrationForm.get('motherPhone').errors?.required && registrationForm.get('motherPhone').touched"
+        class="warning-message error-message">
+        Phone Number is required
+      </div>
+      <div *ngIf="registrationForm.get('motherPhone').errors?.minlength && registrationForm.get('motherPhone').touched"
+        class="warning-message error-message">
+        Phone Number must be 10 digits long
+      </div>
+
+      <div *ngIf="registrationForm.get('motherPhone').errors?.maxlength && registrationForm.get('motherPhone').touched"
+        class="warning-message error-message">
+        Phone Number must not be exceeds 10 digits
+      </div>
     </div>
     <div class="form-group">
       <label for="motherEmail">Email:</label>

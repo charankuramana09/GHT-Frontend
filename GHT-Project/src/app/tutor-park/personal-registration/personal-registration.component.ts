@@ -1,7 +1,7 @@
 // Update in personal-registration.component.ts
 
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,  AbstractControl } from '@angular/forms';
 import { TutorRegistrationService } from '../../services/tutor-registration.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class PersonalRegistrationComponent implements OnInit {
       gender: ['', Validators.required],
       dob: ['', Validators.required],
       city: ['', Validators.required],
-      mobileNo: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      mobileNo: ['', [Validators.required,Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[0-9]{10}$')]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
@@ -37,5 +37,16 @@ export class PersonalRegistrationComponent implements OnInit {
     let pass = group.get('password').value;
     let confirmPass = group.get('confirmPassword').value;
     return pass === confirmPass ? null : { notSame: true };
+  }
+
+  phoneValidator(control: AbstractControl) {
+    const value = control.value;
+    if (value && value.length !== 10) {
+      return { minlength: true };
+    }
+    if(value && value.length === 10){
+      return{maxlength:true};
+    }
+    return null;
   }
 }

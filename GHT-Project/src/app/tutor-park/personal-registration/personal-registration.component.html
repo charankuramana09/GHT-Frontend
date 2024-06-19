@@ -50,9 +50,18 @@
   <div class="form-group">
     <label for="mobileNo">Mobile No.:</label>
     <input id="mobileNo" formControlName="mobileNo" type="text" class="form-control">
-    <div *ngIf="registrationForm.get('mobileNo').hasError('required') && registrationForm.get('mobileNo').touched" class="warning-message error-message">
+    <div *ngIf="registrationForm.get('mobileNo').errors?.required && registrationForm.get('mobileNo').touched" class="warning-message error-message">
       mobile No is required
     </div>
+    <div *ngIf="registrationForm.get('mobileNo').errors?.minlength && registrationForm.get('mobileNo').touched"
+    class="warning-message error-message">
+    Phone Number must be 10 digits long
+  </div>
+  <div *ngIf="registrationForm.get('mobileNo').errors?.maxlength && registrationForm.get('mobileNo').touched"
+  class="warning-message error-message">
+  Phone Number must not be exceeds 10 digits 
+</div>
+
   </div>
 
   <div class="form-group">

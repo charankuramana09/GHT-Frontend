@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router'; // Import Router
 import { TutorRegistrationService } from '../../../services/tutor-registration.service';
 import { File } from 'node:buffer';
@@ -15,7 +15,8 @@ export class StudentRegistrationComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private trs: TutorRegistrationService,
-    private router: Router // Inject Router
+    private router: Router ,// Inject Router
+    
   ) { }
 
   ngOnInit(): void {
@@ -30,11 +31,11 @@ export class StudentRegistrationComponent implements OnInit {
       addressLine2: [''],
       fatherName: ['', Validators.required],
       fatherOccupation: ['', Validators.required],
-      fatherPhone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      fatherPhone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[0-9]{10}$')]],
       fatherEmail: ['', [Validators.required, Validators.email]],
       motherName: ['', Validators.required],
       motherOccupation: [''],
-      motherPhone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      motherPhone: ['', [Validators.required,Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[0-9]{10}$')]],
       motherEmail: [''],
       parentAddress: ['', Validators.required],
       image: [null, Validators.required]
@@ -51,6 +52,17 @@ export class StudentRegistrationComponent implements OnInit {
   
   onImageChange(event: any) {
     this.selectedImage = <File>event.target.files[0];
+  }
+
+  phoneValidator(control: AbstractControl) {
+    const value = control.value;
+    if (value && value.length !== 10) {
+      return { minlength: true };
+    }
+    if(value && value.length === 10){
+      return{maxlength:true};
+    }
+    return null;
   }
 
 
@@ -73,4 +85,6 @@ export class StudentRegistrationComponent implements OnInit {
       console.log('Form is invalid');
     }
   }
+
+ 
 }
