@@ -37,7 +37,6 @@ export class StudentLoginComponent {
       error => {
         this.message = 'Login failed';
         console.log( 'error  ' , error);
-
       }
     );
   }
