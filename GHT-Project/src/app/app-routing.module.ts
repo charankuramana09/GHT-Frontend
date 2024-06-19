@@ -15,7 +15,7 @@ import { StudentLoginComponent } from './components/student-login/student-login.
 import { PublicTutorDashboardComponent } from './components/public-tutor-dashboard/public-tutor-dashboard.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 const routes: Routes = [
- 
+  { path: '', component: HomePageComponent },
   { path: 'student-signup', component: StudentRegistrationComponent },
   { path: 'instructor-signup', component: TutorRegistrationComponent },
   { path: 'parent-signup', component: ParentRegistrationComponent },

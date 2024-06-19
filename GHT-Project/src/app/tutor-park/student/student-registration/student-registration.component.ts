@@ -33,11 +33,11 @@ export class StudentRegistrationComponent implements OnInit {
       fatherPhone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       fatherEmail: ['', [Validators.required, Validators.email]],
       motherName: ['', Validators.required],
-      motherOccupation: ['', Validators.required],
+      motherOccupation: [''],
       motherPhone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-      motherEmail: ['', [Validators.required, Validators.email]],
+      motherEmail: [''],
       parentAddress: ['', Validators.required],
-      image: [null]
+      image: [null, Validators.required]
     });
 
     this.registrationForm.valueChanges.subscribe(value => {
