@@ -28,10 +28,10 @@
     border-bottom: none;
   }
   
-  .student-profile .card-body {
+  /* .student-profile .card-body {
     background-color: #138496;
     padding: 20px;
-  }
+  } */
   
   .student-profile .table th,
   .student-profile .table td {

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TutorRegistrationService } from '../../../services/tutor-registration.service';
-import { __values } from 'tslib';
 
 @Component({
   selector: 'app-tutor-registration',
@@ -36,7 +35,7 @@ export class TutorRegistrationComponent{
       this.trs.setForm2Data(value);
       console.log(value);
     });
-   
+      
 
   }
 
