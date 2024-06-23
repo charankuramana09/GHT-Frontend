@@ -1,92 +1,211 @@
+<!-- Conditionally display the heading based on the user type -->
+<h1 class="my-3" *ngIf="!isStudentLoggedIn">Tutor Personal Details</h1>
+<h1 class="my-3" *ngIf="isStudentLoggedIn">Student Personal Details</h1>
 
 
+<!-- <ng-container *ngIf="isStudentLoggedIn; then template1 else template2"></ng-container>
 
-<!-- <h1>Personal Details </h1> -->
+<ng-template #template1>
+     <div>Template 1 contains</div>
+</ng-template>
 
-<h1 class="my-3"> Personal Details   </h1>
+<ng-template #template2>
+     <div>Template 2 contains </div>
+</ng-template> -->
 
-<form [formGroup]="registrationForm" class="form-container ">
-  <div class="form-group">
-    <label for="name">Name:</label>
-    <input id="name" formControlName="name" type="text" class="form-control">
-    <div *ngIf="registrationForm.get('name').hasError('required') && registrationForm.get('name').touched" class="warning-message error-message">
-      Name is required
+<form [formGroup]="registrationForm" class="form-container row g-3 align-item-center">
+
+  <div class="col-lg-12 d-flex">
+    <div class="form-group col-md-6">
+      <label for="name"> First Name:</label>
+      <input id="name" formControlName="name" type="text" class="form-control">
+      <div *ngIf="registrationForm.get('name').hasError('required') && registrationForm.get('name').touched"
+        class="warning-message error-message">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="surname">Last Name:</label>
+      <input id="surname" formControlName="surname" type="text" class="form-control">
+      <div *ngIf="registrationForm.get('surname').hasError('required') && registrationForm.get('surname').touched"
+        class="warning-message error-message">
+        Surname is required
+      </div>
     </div>
   </div>
-  
-  <div class="form-group">
-    <label for="surname">Surname:</label>
-    <input id="surname" formControlName="surname" type="text" class="form-control">
-    <div *ngIf="registrationForm.get('surname').hasError('required') && registrationForm.get('surname').touched" class="warning-message error-message">
-      Surname is required
-    </div>
-  </div>
 
-  <div class="form-group">
-    <label>Gender:</label>
-    <label><input formControlName="gender" type="radio" value="male"> Male</label>
-    <label><input formControlName="gender" type="radio" value="female"> Female</label>
-    <div *ngIf="registrationForm.get('gender').hasError('required') && registrationForm.get('gender').touched" class="warning-message error-message">
-      Gender is required
-    </div>
-  </div>
 
-  <div class="form-group">
-    <label for="dob">DOB:</label>
+
+  <!-- <div class="form-group">
+      <label for="city">City:</label>
+      <input id="city" formControlName="city" type="text" class="form-control">
+      <div *ngIf="registrationForm.get('city').hasError('required') && registrationForm.get('city').touched"
+        class="warning-message error-message">
+        City is required
+      </div>
+    </div> -->
+<div class="d-flex align-item-center ">
+
+
+  <div class="form-group col-md-6">
+    <label for="dob">Date of Birth:</label>
     <input id="dob" formControlName="dob" type="date" class="form-control">
-    <div *ngIf="registrationForm.get('dob').hasError('required') && registrationForm.get('dob').touched" class="warning-message error-message">
+    <div *ngIf="registrationForm.get('dob').hasError('required') && registrationForm.get('dob').touched"
+      class="warning-message error-message">
       Date of Birth is required
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="city">City:</label>
-    <input id="city" formControlName="city" type="text" class="form-control">
-    <div *ngIf="registrationForm.get('city').hasError('required') && registrationForm.get('city').touched" class="warning-message error-message">
-      City is required
+  <div class="form-group form-check col-md-6 py-4">
+    <label>Gender:</label>
+    <div class="form-check form-check-inline px-3">
+      <input class="form-check-input" name="inlineRadioOptions" id="inlineRadioMale" formControlName="gender"
+        type="radio" value="male">
+      <label class="form-check-label" for="inlineRadioMale">Male</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" name="inlineRadioOptions" id="inlineRadioFemale" formControlName="gender"
+        type="radio" value="male">
+      <label class="form-check-label" for="inlineRadioFemale">Female</label>
+    </div>
+    <div *ngIf="registrationForm.get('gender').hasError('required') && registrationForm.get('gender').touched"
+      class="warning-message error-message">
+      Gender is required
     </div>
   </div>
-
-  <div class="form-group">
-    <label for="mobileNo">Mobile No.:</label>
-    <input id="mobileNo" formControlName="mobileNo" type="text" class="form-control">
-    <div *ngIf="registrationForm.get('mobileNo').errors?.required && registrationForm.get('mobileNo').touched" class="warning-message error-message">
-      mobile No is required
-    </div>
-    <div *ngIf="registrationForm.get('mobileNo').errors?.minlength && registrationForm.get('mobileNo').touched"
-    class="warning-message error-message">
-    Phone Number must be 10 digits long
-  </div>
-  <div *ngIf="registrationForm.get('mobileNo').errors?.maxlength && registrationForm.get('mobileNo').touched"
-  class="warning-message error-message">
-  Phone Number must not be exceeds 10 digits 
 </div>
 
-  </div>
+  <div class="form-group col-md-6">
+    <label for="mobileNo">Mobile Number:</label>
 
-  <div class="form-group">
-    <label for="email">Email ID:</label>
-    <input id="email" formControlName="email" type="email" class="form-control">
-    <div *ngIf="registrationForm.get('email').hasError('required') && registrationForm.get('email').touched" class="warning-message error-message">
-      email is required
+
+    <input id="mobileNo" formControlName="mobileNo" type="text" class="form-control" placeholder="000 000 0000">
+    <div *ngIf="registrationForm.get('mobileNo').errors?.required && registrationForm.get('mobileNo').touched"
+      class="warning-message error-message">
+      Mobile No is required
+    </div>
+    <div *ngIf="registrationForm.get('mobileNo').errors?.minlength && registrationForm.get('mobileNo').touched"
+      class="warning-message error-message">
+      Phone Number must be 10 digits long
+    </div>
+    <div *ngIf="registrationForm.get('mobileNo').errors?.maxlength && registrationForm.get('mobileNo').touched"
+      class="warning-message error-message">
+      Phone Number must not exceed 10 digits
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-md-6">
+    <label for="email">Email ID:</label>
+    <input id="email" formControlName="email" type="email" class="form-control" placeholder="konamoni@gmail.com">
+    <div *ngIf="registrationForm.get('email').hasError('required') && registrationForm.get('email').touched"
+      class="warning-message error-message">
+      Email is required
+    </div>
+  </div>
+
+  <div class="form-group col-md-6">
     <label for="password">Password:</label>
-    <input id="password" formControlName="password" type="password" class="form-control">
-    <div *ngIf="registrationForm.get('password').hasError('required') && registrationForm.get('password').touched" class="warning-message error-message">
+    <input id="password" formControlName="password" type="password" class="form-control"aria-describedby="passwordHelpInline" >
+    <div class="col-auto">
+      <span id="passwordHelpInline" class="form-text">
+        Must be 8-20 characters long.
+      </span>
+    </div>
+    <div *ngIf="registrationForm.get('password').hasError('required') && registrationForm.get('password').touched"
+      class="warning-message error-message">
       Password is required
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-md-6">
     <label for="confirmPassword">Confirm Password:</label>
-    <input id="confirmPassword" formControlName="confirmPassword" type="password" class="form-control">
-    <div *ngIf="registrationForm.get('confirmPassword').hasError('required') && registrationForm.get('confirmPassword').touched" class="warning-message error-message">
+    <input id="confirmPassword" formControlName="confirmPassword" type="password" class="form-control" aria-describedby="passwordHelpInline">
+    
+    <div
+      *ngIf="registrationForm.get('confirmPassword').hasError('required') && registrationForm.get('confirmPassword').touched"
+      class="warning-message error-message">
       Confirm Password is required
+    </div>
+
+  </div>
+
+  <div class="form-group col-md-12">
+    <label for="addressLine1">Address:</label>
+    <input id="addressLine1" type="text" formControlName="addressLine1" class="form-control">
+    <div
+      *ngIf="registrationForm.get('addressLine1').hasError('required') && registrationForm.get('addressLine1').touched"
+      class="warning-message error-message">
+      address is required
     </div>
   </div>
 
-</form>
+  <div class=" form-group col-md-5">
+    <label for="inputCity" class="form-label">City</label>
+    <input type="text" class="form-control" id="inputCity" formControlName="inputCity">
+    <div *ngIf="registrationForm.get('inputCity').hasError('required') && registrationForm.get('inputCity').touched"
+    class="warning-message">
+    City name is required
 
+    </div>
+  </div>
+  <div class="form-group  col-md-4">
+    <label for="inputState" class="form-label">State</label>
+    <select id="inputState"  formControlName="inputState" class="form-select">
+      <option selected>Choose State</option>
+      <option value="">Andra Pradesh</option>
+      <option value="">Arunachal Pradesh</option>
+      <option value="">Assam</option>
+      <option value="">Bihar</option>
+      <option value="">Chattisgarh</option>
+      <option value="">Goa</option>
+      <option value="">Gujarat</option>
+      <option value="">Haryana</option>
+      <option value="">Himachal Pradesh</option>
+      <option value="">Jharkand</option>
+      <option value="">Kerala</option>
+      <option value="">Karnataka</option>
+      <option value="">Madhya Pradesh</option>
+      <option value="">Meghalaya</option>
+      <option value="">Manipur</option>
+      <option value="">Mizoram</option>
+      <option value="">Nagaland</option>
+      <option value="">Odisha</option>
+      <option value="">Punjab</option>
+      <option value="">Sikkim</option>
+      <option value="">Rajastan</option>
+      <option value="">Tamil Nadu</option>
+      <option value="">Telangana</option>
+      <option value="">Tripura</option>
+      <option value="">Uttar Pradesh</option>
+      <option value="">Uttar kand</option>
+      <option value="">West Bengal</option>
+    </select>
+    <div *ngIf="registrationForm.get('inputState').hasError('required') && registrationForm.get('inputState').touched"
+    class="warning-message">
+    State is required
+
+    </div>
+  </div>
+  <div class=" form-group col-md-3">
+    <label for="inputZip" class="form-label">Postal Code</label>
+    <input type="text" class="form-control" id="inputZip" formControlName="inputZip" >
+    <div *ngIf = "registrationForm.get('inputZip').hasError('required')&& registrationForm.get('inputZip').touched"
+    class="warning-message  error-message">
+     Postal Code is required
+
+    </div>
+  </div>
+
+  
+  <div class="mb-3">
+    <label for="image" class="form-label">Upload Image </label>
+    <input class="form-control form-control-sm" id="image" type="file" (change)="onImageChange($event)" formControlName="image">
+    <div *ngIf="registrationForm.get('image').hasError('required') && registrationForm.get('image').touched"
+    class="warning-message error-message">
+    Image is required
+  </div>
+  </div>
+  
+
+</form>

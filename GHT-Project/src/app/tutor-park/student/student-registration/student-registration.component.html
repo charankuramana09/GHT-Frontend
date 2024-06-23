@@ -158,14 +158,7 @@
       <input id="parentAddress" type="text" formControlName="parentAddress" class="form-control">
     </div>
 
-    <div>
-      <label for="image">Image:</label>
-      <input type="file" id="image" (change)="onImageChange($event)">
-      <div *ngIf="registrationForm.get('image').hasError('required') && registrationForm.get('image').touched"
-        class="warning-message error-message">
-        Image is required
-      </div>
-    </div>
+  
   </div>
 
   <button type="submit" class=" rounded-pill submit-button">Submit</button>

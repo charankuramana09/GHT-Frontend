@@ -74,7 +74,7 @@ export class StudentRegistrationComponent implements OnInit {
       ).subscribe(
         data => {
           console.log(data);
-          
+          alert("Data added Successfull ")
           this.router.navigate(['/login']);
         },
         error => {
@@ -82,6 +82,7 @@ export class StudentRegistrationComponent implements OnInit {
         }
       );
     } else {
+      alert("Invalid Form ")
       console.log('Form is invalid');
     }
   }
