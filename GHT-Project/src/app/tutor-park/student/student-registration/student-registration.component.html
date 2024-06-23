@@ -1,9 +1,11 @@
+<!-- <h1 class="my-3" *ngIf="!isStudentLoggedIn">Tutor Personal Details</h1> -->
 
 <div class="form-container col-md-12">
 
 
 
 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="student-registration">
+  <h1 class="my-3" *ngIf="isStudentLoggedIn">Student Personal Details</h1>
   <!-- Personal Information Component -->
   <app-personal-registration></app-personal-registration>
   <div class=" form-group row g-3 py-4 my-5">

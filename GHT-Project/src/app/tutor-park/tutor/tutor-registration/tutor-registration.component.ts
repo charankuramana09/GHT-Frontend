@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TutorRegistrationService } from '../../../services/tutor-registration.service';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-tutor-registration',
   templateUrl: './tutor-registration.component.html',
   styleUrls: ['./tutor-registration.component.css']
 })
-export class TutorRegistrationComponent {
+export class TutorRegistrationComponent{
   registrationForm: FormGroup;
+   isStudentLoggedIn: boolean;
+
+  
 
   files: { [key: string]: File } = {
     resume: null,
@@ -18,14 +22,41 @@ export class TutorRegistrationComponent {
     photo: null
   };
 
+  ngOnInIt():void{
+    this.registrationForm = this.fb.group(
+      {
+        resume:[null, Validators.required],
+        drivingLicense:[null , Validators.required],
+        addressProof:[null, Validators.required],
+        photo:[null, Validators.required]
+      }
+    );
+
+    this.registrationForm.valueChanges.subscribe(value =>{
+      this.trs.setForm2Data(value);
+      console.log(value);
+    });
+   
+
+  }
+
+
+
   constructor(private fb: FormBuilder, private trs: TutorRegistrationService, private router: Router) {
     this.registrationForm = this.fb.group({
       subjects: this.fb.array([]) // FormArray to store selected subjects
     });
+    this.isStudentLoggedIn = this.checkIfStudentLoggedIn();
   }
 
   onFileChange(event: any, fileType: string) {
     this.files[fileType] = event.target.files[0];
+  }
+
+  
+
+  checkIfStudentLoggedIn(): boolean {
+    return true;
   }
 
   onCheckboxChange(event: any) {
@@ -41,6 +72,9 @@ export class TutorRegistrationComponent {
       }
     }
   }
+
+  
+
 
   onSubmit() {
     const formData = new FormData();
