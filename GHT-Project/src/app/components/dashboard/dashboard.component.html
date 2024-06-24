@@ -14,15 +14,15 @@
                   <div class="card shadow-sm bg-info">
                     <div class="card-header text-center">
                       <img class="profile_img" 
-                           [src]="student.image ? 'data:image/jpeg;base64,' + student.image : 'assets/img/user.jpg'" 
+                           [src]="imageUrl || 'assets/img/user.jpg'" 
                            alt="student dp">
-                      <h3 class="text-white">{{ student.name }}</h3>
+                      <h3 class="text-white">{{ student?.name }}</h3>
                     </div>
 
                     <div class="card-body text-white">
-                      <p class="mb-0"><strong class="pr-1">Student ID:</strong>{{ student.id }}</p>
-                      <p class="mb-0"><strong class="pr-1">Mobile No:</strong>{{ student.mobileNo }}</p>
-                      <p class="mb-0"><strong class="pr-1">School:</strong>{{ student.school || 'N/A' }}</p>
+                      <p class="mb-0"><strong class="pr-1">Student ID:</strong>{{ student?.id }}</p>
+                      <p class="mb-0"><strong class="pr-1">Mobile No:</strong>{{ student?.mobileNo }}</p>
+                      <p class="mb-0"><strong class="pr-1">School:</strong>{{ student?.school || 'N/A' }}</p>
                     </div>
                   </div>
 
@@ -54,32 +54,32 @@
                         <tr>
                           <th width="30%">Email</th>
                           <td width="2%">:</td>
-                          <td>{{ student.email || 'N/A' }}</td>
+                          <td>{{ student?.email || 'N/A' }}</td>
                         </tr>
                         <tr>
                           <th width="30%">Gender</th>
                           <td width="2%">:</td>
-                          <td>{{ student.gender || 'N/A' }}</td>
+                          <td>{{ student?.gender || 'N/A' }}</td>
                         </tr>
                         <tr>
                           <th width="30%">Father's Name</th>
                           <td width="2%">:</td>
-                          <td>{{ student.fatherName || 'N/A' }}</td>
+                          <td>{{ student?.fatherName || 'N/A' }}</td>
                         </tr>
                         <tr>
                           <th width="30%">Father's Occupation</th>
                           <td width="2%">:</td>
-                          <td>{{ student.fatherOccupation || 'N/A' }}</td>
+                          <td>{{ student?.fatherOccupation || 'N/A' }}</td>
                         </tr>
                         <tr>
                           <th width="30%">Mother's Name</th>
                           <td width="2%">:</td>
-                          <td>{{ student.motherName || 'N/A' }}</td>
+                          <td>{{ student?.motherName || 'N/A' }}</td>
                         </tr>
                         <tr>
                           <th width="30%">Student's Email</th>
                           <td width="2%">:</td>
-                          <td>{{ student.email || 'N/A' }}</td>
+                          <td>{{ student?.email || 'N/A' }}</td>
                         </tr>
                       </table>
                     </div>
@@ -95,7 +95,7 @@
                     </div>
                     <div class="card-body pt-0">
                       <p class="text-dark">
-                        {{ student.otherInfo || 'No additional information provided.' }}
+                        {{ student?.otherInfo || 'No additional information provided.' }}
                       </p>
                     </div>
                   </div>

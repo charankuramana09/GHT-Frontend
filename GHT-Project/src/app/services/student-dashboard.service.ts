@@ -33,12 +33,14 @@ export class StudentDashboardService {
   // Updated: return this.http.post(`${this.studentService}${endpoint}`, user);
   login(user: any, userType: string): Observable<any> {
     const endpoint = userType === 'tutor' ? '/tutors/login' : '/students/login';
-    return this.http.post(`${this.studentService}${endpoint}`, user);
+    return this.http.post(`${this.studentService}${endpoint}`, user,  { headers: { 'Content-Type': 'application/json' } });
   }
 
   // New method to fetch student details by ID (if required)
   getStudentById(id: number): Observable<any> {
     return this.http.get(`${this.studentService}/students/${id}`);
   }
-  
+  getTutorById(id: number): Observable<any> {
+    return this.http.get(`${this.studentService}/tutors/${id}`);
+  }
 }
