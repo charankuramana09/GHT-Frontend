@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { StudentDashboardService } from '../../services/student-dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,17 +11,18 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 export class DashboardComponent implements OnInit {
   student: any;
   imageUrl: SafeUrl | null = null;
+  studentId: number | null = null;
 
-  constructor(private router: Router, private sanitizer: DomSanitizer) {
+  constructor(
+    private router: Router, 
+    private sanitizer: DomSanitizer,
+    private studentService: StudentDashboardService
+  ) {
     const navigation = this.router.getCurrentNavigation();
-    this.student = navigation?.extras?.state?.['student'];
+    this.studentId = navigation?.extras?.state?.['studentId'];
 
-    if (this.student) {
-      console.log(this.student); // Check the student object
-      if (this.student.image) {
-        this.imageUrl = this.sanitizeImage(this.student.image);
-        console.log(this.imageUrl); // Check the generated URL
-      }
+    if (this.studentId) {
+      this.fetchStudentDetails(this.studentId);
     }
   }
 
@@ -30,7 +32,20 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  // Method to sanitize and create image URL
+  fetchStudentDetails(id: number): void {
+    this.studentService.getStudentById(id).subscribe(
+      response => {
+        this.student = response;
+        if (this.student && this.student.image) {
+          this.imageUrl = this.sanitizeImage(this.student.image);
+        }
+      },
+      error => {
+        console.error('Failed to fetch student details', error);
+      }
+    );
+  }
+
   sanitizeImage(imageData: string): SafeUrl {
     const base64Image = `data:image/jpeg;base64,${imageData}`;
     return this.sanitizer.bypassSecurityTrustUrl(base64Image);

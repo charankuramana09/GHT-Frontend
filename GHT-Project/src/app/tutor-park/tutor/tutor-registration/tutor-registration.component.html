@@ -1,57 +1,62 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-lg-9">
-      <form (ngSubmit)="onSubmit()" [formGroup]="registrationForm">
 
-        <!-- personal information -->
-        <app-personal-registration></app-personal-registration>
 
-        <!-- Expert in Subjects Section -->
-        <div class="form-group col-lg-9">
-          <label>Expert in Subjects:</label>
-          <div class="checkbox-group">
-            <label>
-              <input type="checkbox" formArrayName="subjects" (change)="onCheckboxChange($event)" value="Maths">
-              Maths
-            </label>
-            <label>
-              <input type="checkbox" formArrayName="subjects" (change)="onCheckboxChange($event)" value="Physics">
-              Physics
-            </label>
-            <label>
-              <input type="checkbox" formArrayName="subjects" (change)="onCheckboxChange($event)" value="Chemistry">
-              Chemistry
-            </label>
-            <label>
-              <input type="checkbox" formArrayName="subjects" (change)="onCheckboxChange($event)" value="Social">
-              Social
-            </label>
-          </div>
-        </div>
 
-        <!-- File Inputs -->
-        <div>
-          <label for="resume">Resume:</label>
-          <input type="file" id="resume" (change)="onFileChange($event, 'resume')" accept=".pdf, .docx, .jpeg, .png">
-        </div>
-        <div>
-          <label for="drivingLicense">Driving License:</label>
-          <input type="file" id="drivingLicense" (change)="onFileChange($event, 'drivingLicense')"
-            accept=".pdf, .docx, .jpeg, .png">
-        </div>
-        <div>
-          <label for="addressProof">Address Proof:</label>
-          <input type="file" id="addressProof" (change)="onFileChange($event, 'addressProof')"
-            accept=".pdf, .docx, .jpeg, .png">
-        </div>
-        <div>
-          <label for="photo">Photo:</label>
-          <input type="file" id="photo" (change)="onFileChange($event, 'photo')" accept=".pdf, .docx, .jpeg, .png">
-        </div>
+<div class="form-container col-md-6">
+  <form (ngSubmit)="onSubmit()" [formGroup]="registrationForm" class="row g-3">
+    <h1 class="my-3" *ngIf="isStudentLoggedIn">Tutor Personal Details</h1>
+    <app-personal-registration></app-personal-registration>
 
-        <!-- Submit button -->
-        <button type="submit" class="rounded-pill btn-submit">Submit</button>
-      </form>
+    <!-- Expert in Subjects Section -->
+    <div class="form-group col-md-12  d-flex">
+      <label>Expert in Subjects:</label>
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" formArrayName="subjects" (change)="onCheckboxChange($event)" value="Maths" >
+          Maths
+        </label>
+        <label>
+          <input type="checkbox" formArrayName="subjects" (change)="onCheckboxChange($event)" value="Physics">
+          Physics
+        </label>
+        <label>
+          <input  type="checkbox" formArrayName="subjects" (change)="onCheckboxChange($event)" value="Chemistry">
+          Chemistry
+        </label>
+        <label>
+          <input  type="checkbox" formArrayName="subjects" (change)="onCheckboxChange($event)" value="Social">
+          Social
+        </label>
+      </div>
     </div>
+
+    <!-- File Inputs -->
+     <div class=" row g-3 col-md-12">
+
+  
+    <div class="col-md-6">
+      <label for="resume">Resume:</label>
+      <input class="form-control" type="file" id="resume" (change)="onFileChange($event, 'resume')" accept=".pdf, .docx, .jpeg, .png">
+    </div>
+    <div class="col-md-6">
+      <label for="drivingLicense">Driving License:</label>
+      <input  class="form-control"type="file" id="drivingLicense" (change)="onFileChange($event, 'drivingLicense')"
+        accept=".pdf, .docx, .jpeg, .png">
+    </div>
+    <div class="col-md-6">
+      <label for="addressProof">Address Proof:</label>
+      <input  class="form-control" type="file" id="addressProof" (change)="onFileChange($event, 'addressProof')"
+        accept=".pdf, .docx, .jpeg, .png">
+    </div>
+    <div class="col-md-6">
+      <label for="photo">Photo:</label>
+      <input  class="form-control" type="file" id="photo" (change)="onFileChange($event, 'photo')" accept=".pdf, .docx, .jpeg, .png">
+    </div>
+
   </div>
+
+    <!-- Submit button -->
+    <button  class="form-control" type="submit" class=" col-md-10   mx-5 fs-4 rounded-pill btn-submit">Submit</button>
+  </form>
+
+
 </div>

@@ -11,11 +11,13 @@ import { File } from 'node:buffer';
 })
 export class StudentRegistrationComponent implements OnInit {
   registrationForm: FormGroup;
+   isStudentLoggedIn: boolean;
 
   constructor(
     private fb: FormBuilder,
     private trs: TutorRegistrationService,
     private router: Router ,// Inject Router
+   
     
   ) { }
 
@@ -45,8 +47,12 @@ export class StudentRegistrationComponent implements OnInit {
       this.trs.setForm2Data(value);
       console.log(value);
     });
+    this.isStudentLoggedIn = this.checkIfStudentLoggedIn();
+    
     
   }
+
+  
 
   selectedImage: File | null = null;
   
@@ -65,6 +71,10 @@ export class StudentRegistrationComponent implements OnInit {
     return null;
   }
 
+  checkIfStudentLoggedIn(): boolean {
+    return true;
+  }
+
 
   onSubmit() {
 
@@ -74,7 +84,7 @@ export class StudentRegistrationComponent implements OnInit {
       ).subscribe(
         data => {
           console.log(data);
-          
+          alert("Data added Successfull ")
           this.router.navigate(['/login']);
         },
         error => {
@@ -82,6 +92,7 @@ export class StudentRegistrationComponent implements OnInit {
         }
       );
     } else {
+      alert("Invalid Form ")
       console.log('Form is invalid');
     }
   }

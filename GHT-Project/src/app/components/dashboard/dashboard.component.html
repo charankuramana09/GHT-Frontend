@@ -14,15 +14,15 @@
                   <div class="card shadow-sm bg-info">
                     <div class="card-header text-center">
                       <img class="profile_img" 
-                           [src]="student.image ? 'data:image/jpeg;base64,' + student.image : 'assets/img/user.jpg'" 
+                           [src]="imageUrl || 'assets/img/user.jpg'" 
                            alt="student dp">
-                      <h3 class="text-white">{{ student.name }}</h3>
+                      <h3 class="text-white">{{ student?.name }}</h3>
                     </div>
 
                     <div class="card-body text-white">
-                      <p class="mb-0"><strong class="pr-1">Student ID:</strong>{{ student.id }}</p>
-                      <p class="mb-0"><strong class="pr-1">Mobile No:</strong>{{ student.mobileNo }}</p>
-                      <p class="mb-0"><strong class="pr-1">School:</strong>{{ student.school || 'N/A' }}</p>
+                      <p class="mb-0"><strong class="pr-1">Student ID:</strong>{{ student?.id }}</p>
+                      <p class="mb-0"><strong class="pr-1">Mobile No:</strong>{{ student?.mobileNo }}</p>
+                      <p class="mb-0"><strong class="pr-1">School:</strong>{{ student?.school || 'N/A' }}</p>
                     </div>
                   </div>
 
@@ -47,38 +47,39 @@
                   <div class="card shadow-sm">
                     <div class="card-header bg-transparent border-0">
                       <h2 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h2>
+
                     </div>
                     <div class="card-body pt-0">
                       <table class="table table-bordered">
                         <tr>
                           <th width="30%">Email</th>
                           <td width="2%">:</td>
-                          <td>{{ student.email || 'N/A' }}</td>
+                          <td>{{ student?.email || 'N/A' }}</td>
                         </tr>
                         <tr>
                           <th width="30%">Gender</th>
                           <td width="2%">:</td>
-                          <td>{{ student.gender || 'N/A' }}</td>
+                          <td>{{ student?.gender || 'N/A' }}</td>
                         </tr>
                         <tr>
                           <th width="30%">Father's Name</th>
                           <td width="2%">:</td>
-                          <td>{{ student.fatherName || 'N/A' }}</td>
+                          <td>{{ student?.fatherName || 'N/A' }}</td>
                         </tr>
                         <tr>
                           <th width="30%">Father's Occupation</th>
                           <td width="2%">:</td>
-                          <td>{{ student.fatherOccupation || 'N/A' }}</td>
+                          <td>{{ student?.fatherOccupation || 'N/A' }}</td>
                         </tr>
                         <tr>
                           <th width="30%">Mother's Name</th>
                           <td width="2%">:</td>
-                          <td>{{ student.motherName || 'N/A' }}</td>
+                          <td>{{ student?.motherName || 'N/A' }}</td>
                         </tr>
                         <tr>
                           <th width="30%">Student's Email</th>
                           <td width="2%">:</td>
-                          <td>{{ student.email || 'N/A' }}</td>
+                          <td>{{ student?.email || 'N/A' }}</td>
                         </tr>
                       </table>
                     </div>
@@ -88,10 +89,13 @@
                   <div class="card shadow-sm">
                     <div class="card-header bg-transparent border-0">
                       <h2 class="mb-0"><i class="far fa-clone pr-1"></i>Other Information</h2>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates iste alias ipsa a delectus consectetur corporis nesciunt, earum, odio adipisci voluptatibus, inventore eius praesentium. Debitis laudantium reprehenderit hic consequatur, sint dolorum ea porro doloremque quidem laboriosam qui, sunt corporis tempore?
+                      </p>
                     </div>
                     <div class="card-body pt-0">
                       <p class="text-dark">
-                        {{ student.otherInfo || 'No additional information provided.' }}
+                        {{ student?.otherInfo || 'No additional information provided.' }}
                       </p>
                     </div>
                   </div>

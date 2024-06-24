@@ -1,12 +1,29 @@
-<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="form-container student-registration">
+<!-- <h1 class="my-3" *ngIf="!isStudentLoggedIn">Tutor Personal Details</h1> -->
+
+<div class="form-container col-md-12">
+
+
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="student-registration">
+  <h1 class="my-3" *ngIf="isStudentLoggedIn">Student Personal Details</h1>
   <!-- Personal Information Component -->
   <app-personal-registration></app-personal-registration>
-  <div class="my-5 py-2">
+  <div class=" form-group row g-3 py-4 my-5">
     <h2 class="m-3">Additional Details After Registration</h2>
-    <div class="form-group">
-      <label for="board">Select Board:</label>
-      <select id="board" formControlName="board" class="form-control">
-        <option value="">Select</option>
+
+    <div class="form-group col-md-12">
+      <label for="school">School Name:</label>
+      <input id="school" type="text" formControlName="school" class="form-control">
+      <div *ngIf="registrationForm.get('school').hasError('required') && registrationForm.get('school').touched"
+        class="warning-message error-message">
+        School Name is required
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="board" class="label-form">Select Board:</label>
+      <select id="board" form-select form-select-md mb-3 formControlName="board" class="form-select">
+        <option selected>Open this select menu</option>
         <option value="CBSE">CBSE</option>
         <option value="ICSE">ICSE</option>
         <option value="State">State</option>
@@ -16,29 +33,36 @@
         Board is required
       </div>
     </div>
-    <div class="form-group">
-      <label for="school">School:</label>
-      <input id="school" type="text" formControlName="school" class="form-control">
-      <div *ngIf="registrationForm.get('school').hasError('required') && registrationForm.get('school').touched"
-        class="warning-message error-message">
-        School Name is required
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="class">Class:</label>
-      <input id="class" type="text" formControlName="class" class="form-control">
+
+    <div class="form-group col-md-6">
+      <label for="class" class="form-label">Class:</label>
+      <select name="" id="class" formControlName="class" class="form-select">
+        <option selected>Select Class </option>
+        <option value="class-0">U.K.G</option>
+        <option value="class-1">Class-I</option>
+        <option value="class-2">Class-II</option>
+        <option value="class-3">Class-III</option>
+        <option value="class-4">Class-IV</option>
+        <option value="class-5">Class-V</option>
+        <option value="class-6">Class-VI</option>
+        <option value="class-7">Class-VII</option>
+        <option value="class-8">Class-VIII</option>
+        <option value="class-9">Class-IX</option>
+        <option value="class-10">Class-X</option>
+      </select>
+      <!-- <input id="class" type="text" formControlName="class" class="form-control"> -->
       <div *ngIf="registrationForm.get('class').hasError('required') && registrationForm.get('class').touched"
         class="warning-message error-message">
         Class is required
       </div>
     </div>
-    <div class=" text-align-center ">
-      <label for="preferredTimings" class="px-2 preferred-Timings">Preferred Timings:</label>
-      <input id="preferredTimings" type="checkbox" formControlName="preferredTimings" value="time-1">
+    <div class="  col-md-12 d-flex align-item-center text-align-center ">
+      <label for="preferredTimings" class="px-2 py-2 preferred-Timings ">Preferred Timings:</label>
+      <input id="preferredTimings" type="checkbox" formControlName="preferredTimings" value="time-1" class="mb-2">
       <label for="preferredTimings" class="p-2">6:00 am to 9:00 am</label>
-      <input id="preferredTimings" type="checkbox" formControlName="preferredTimings" value="time-2">
+      <input id="preferredTimings" type="checkbox" formControlName="preferredTimings" value="time-2" class="mb-2">
       <label for="preferredTimings" class="p-2">4:00 pm to 6:00 pm</label>
-      <input id="preferredTimings" type="checkbox" formControlName="preferredTimings" value="time-3">
+      <input id="preferredTimings" type="checkbox" formControlName="preferredTimings" value="time-3" class="mb-2">
       <label for="preferredTimings" class="p-2">6:00 pm to 9:00 pm</label>
       <div
         *ngIf="registrationForm.get('preferredTimings').hasError('required') && registrationForm.get('preferredTimings').touched"
@@ -46,44 +70,63 @@
         Preferred Timings is required
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-6">
       <label for="daysPerWeek">Number of Days in a Week:</label>
-      <input id="daysPerWeek" type="number" formControlName="daysPerWeek" class="form-control">
+      <!-- <input id="daysPerWeek" type="number" formControlName="daysPerWeek" class="form-control"> -->
+      <select name="" id="daysPerWeek" class="form-select" formControlName="daysPerWeek">
+        <option value="" selected>Choose Day</option>
+        <option value="day-1">Sunday</option>
+        <option value="day-2">Monday</option>
+        <option value="day-3">Tuesday</option>
+        <option value="day-4">Wednesday</option>
+        <option value="day-5">Thursday</option>
+        <option value="day-6">Friday</option>
+        <option value="day-7">Saturday</option>
+        <option value="alldays">Monday to Sunday</option>
+      </select>
       <div
         *ngIf="registrationForm.get('daysPerWeek').hasError('required') && registrationForm.get('daysPerWeek').touched"
         class="warning-message error-message">
         Number of Days is required
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-6">
       <label for="sessionDuration">Duration of Each Session (mins):</label>
-      <input id="sessionDuration" type="number" formControlName="sessionDuration" class="form-control">
+      <!-- <input id="sessionDuration" type="number" formControlName="sessionDuration" class="form-control"> -->
+      <select name="" id="sessionDuration"formControlName="sessionDuration" class="form-select" >
+        <option value=""> Select the Duration</option>
+        <option value="mins-45">45 mins</option>
+        <option value="mins-60">60 mins</option>
+        <option value="mins-90">90 mins</option>
+        
+
+      </select>
       <div
         *ngIf="registrationForm.get('sessionDuration').hasError('required') && registrationForm.get('sessionDuration').touched"
         class="warning-message error-message">
         Duration of Session is required
       </div>
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="addressLine1">Address Line 1:</label>
       <input id="addressLine1" type="text" formControlName="addressLine1" class="form-control">
       <div
         *ngIf="registrationForm.get('addressLine1').hasError('required') && registrationForm.get('addressLine1').touched"
         class="warning-message error-message">
-        address is required
+        Address is required
       </div>
-    </div>
-    <div class="form-group">
+    </div> -->
+    <!-- <div class="form-group">
       <label for="addressLine2">Address Line 2:</label>
       <input id="addressLine2" type="text" formControlName="addressLine2" class="form-control">
-    </div>
+    </div> -->
   </div>
 
-  <div class="my-5 py-2">
+  <div class=" row g-3 my-5 py-2">
 
 
     <h2>Parent/Guardian Information</h2>
-    <div class="form-group">
+    <div class="form-group col-md-6">
       <label for="fatherName">Father’s Name:</label>
       <input id="fatherName" type="text" formControlName="fatherName" class="form-control">
       <div *ngIf="registrationForm.get('fatherName').hasError('required') && registrationForm.get('fatherName').touched"
@@ -91,16 +134,16 @@
         Father Name is required
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-6">
       <label for="fatherOccupation">Occupation:</label>
       <input id="fatherOccupation" type="text" formControlName="fatherOccupation" class="form-control">
       <div
         *ngIf="registrationForm.get('fatherOccupation').hasError('required') && registrationForm.get('fatherOccupation').touched"
         class="warning-message error-message">
-        father Occupation is required
+        Father Occupation is required
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-6">
       <label for="fatherPhone">Father's Phone:</label>
       <input id="fatherPhone" type="text" formControlName="fatherPhone" class="form-control" placeholder="000 000 0000">
       <div *ngIf="registrationForm.get('fatherPhone').errors?.required && registrationForm.get('fatherPhone').touched"
@@ -112,15 +155,20 @@
         Phone Number must be 10 digits long
       </div>
       <div *ngIf="registrationForm.get('fatherPhone').errors?.maxlength && registrationForm.get('fatherPhone').touched"
-      class="warning-message error-message">
-      Phone Number must not be exceeds 10 digits 
+        class="warning-message error-message">
+        Phone Number must not be exceeds 10 digits
+      </div>
     </div>
-    </div>
-    <div class="form-group">
+    <div class="form-group col-md-6">
       <label for="fatherEmail">Email:</label>
-      <input id="fatherEmail" type="email" formControlName="fatherEmail" class="form-control">
+      <input id="fatherEmail" type="email" formControlName="fatherEmail" class="form-control" placeholder="konamoni@gmail.com">
+      <div
+        *ngIf="registrationForm.get('fatherEmail').hasError('required') && registrationForm.get('fatherEmail').touched"
+        class="warning-message error-message">
+        Father Email is required
+      </div>
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-6">
       <label for="motherName">Mother’s Name:</label>
       <input id="motherName" type="text" formControlName="motherName" class="form-control">
       <div *ngIf="registrationForm.get('motherName').hasError('required') && registrationForm.get('motherName').touched"
@@ -128,13 +176,13 @@
         Mother Name is required
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-6">
       <label for="motherOccupation">Occupation:</label>
       <input id="motherOccupation" type="text" formControlName="motherOccupation" class="form-control">
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-6">
       <label for="motherPhone">Mother's Phone:</label>
-      <input id="motherPhone" type="text" formControlName="motherPhone" class="form-control">
+      <input id="motherPhone" type="text" formControlName="motherPhone" class="form-control" placeholder="000 000 0000">
       <div *ngIf="registrationForm.get('motherPhone').errors?.required && registrationForm.get('motherPhone').touched"
         class="warning-message error-message">
         Phone Number is required
@@ -149,24 +197,19 @@
         Phone Number must not be exceeds 10 digits
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-6">
       <label for="motherEmail">Email:</label>
-      <input id="motherEmail" type="email" formControlName="motherEmail" class="form-control">
+      <input id="motherEmail" type="email" formControlName="motherEmail" class="form-control"placeholder="k@gmail.com">
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group col-md-12">
       <label for="parentAddress">Address:</label>
       <input id="parentAddress" type="text" formControlName="parentAddress" class="form-control">
-    </div>
+    </div> -->
 
-    <div>
-      <label for="image">Image:</label>
-      <input type="file" id="image" (change)="onImageChange($event)">
-      <div *ngIf="registrationForm.get('image').hasError('required') && registrationForm.get('image').touched"
-        class="warning-message error-message">
-        Image is required
-      </div>
-    </div>
+
   </div>
 
-  <button type="submit" class=" rounded-pill submit-button">Submit</button>
+  <button type="submit" class="  col-md-12 rounded-pill submit-button">Submit</button>
 </form>
+
+</div>
