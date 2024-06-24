@@ -1,5 +1,5 @@
 <div class="login-container">
-  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+  <form (ngSubmit)="onSubmit()"    #loginForm="ngForm">
 
     <h2>Login</h2>
 
@@ -26,7 +26,7 @@
       <label for="rememberMe">Remember Me</label>
     </div>
 
-    <button type="submit" [disabled]="!loginForm.valid" class="btn-submit">Login</button>
+    <button type="submit" [disabled]="!loginForm.valid"  class="btn-submit">Login</button>
 
     <div class="forgot-password">
       <a href="/reset-password">Forgot your password?</a>

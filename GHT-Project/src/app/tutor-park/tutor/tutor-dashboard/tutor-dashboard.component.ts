@@ -5,6 +5,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataDialogComponent } from '../../../components/data-dialog/data-dialog.component';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { TutorRegistrationService } from '../../../services/tutor-registration.service';
+
+
+interface Tutor {
+  email:string;
+  name: string;
+  image: string; // Ensure this is a base64 string or a valid image URL
+  expertise: string;
+}
 
 @Component({
   selector: 'app-tutor-dashboard',
@@ -50,7 +59,6 @@ export class TutorDashboardComponent {
 
 
 
-
   dashboardForm  : FormGroup ;
   paymentHistory = ['Payment 1', 'Payment 2', 'Payment 3'];
   subjects = ['Math', 'Science', 'History'];
@@ -62,7 +70,7 @@ export class TutorDashboardComponent {
   customTests = ['Custom Test 1', 'Custom Test 2', 'Custom Test 3'];
   messages = ['Message 1', 'Message 2', 'Message 3'];
 
-  constructor(private fb: FormBuilder,private http : HttpClient,private route: ActivatedRoute,private dialog: MatDialog,private sanitizer: DomSanitizer,private router: Router) {
+  constructor(private fb: FormBuilder,private http : HttpClient,private route: ActivatedRoute,private dialog: MatDialog, private trs: TutorRegistrationService,  private sanitizer: DomSanitizer,private router: Router) {
     this.dashboardForm = this.fb.group({
       title: ['', Validators.required],
       firstName: ['', Validators.required],
@@ -77,6 +85,7 @@ export class TutorDashboardComponent {
       testSubject: ['', Validators.required],
       testChapter: ['', Validators.required]
     });
+
     const navigation = this.router.getCurrentNavigation();
     this.tutor = navigation?.extras?.state?.['tutor'];
   
@@ -87,8 +96,6 @@ export class TutorDashboardComponent {
         console.log(this.imageUrl); // Check the generated URL
       }
     }
-
-
   }
 
 
@@ -141,6 +148,7 @@ imageUrl: SafeUrl | null = null;
 ngOnInit(): void {
   if (!this.tutor) {
     console.log('No tutor data available');
+    this.loadTutorData();
   }
 }
 
@@ -149,6 +157,30 @@ sanitizeImage(imageData: string): SafeUrl {
   const base64Image = `data:image/jpeg;base64,${imageData}`;
   return this.sanitizer.bypassSecurityTrustUrl(base64Image);
 }
+
+
+
+tutorList: Tutor[] = [];
+
+async loadTutorData(): Promise<void> {
+  const email = this.route.snapshot.paramMap.get('email');
+  if (email) {
+    try {
+      const data = await this.trs.getTutorByEmail(email).toPromise();
+      this.tutorList = data.map(tutor => ({
+        name: tutor[1],
+        image: `data:image/jpeg;base64,${tutor[2]}`, // Assuming tutor[3] is the image string
+        expertise: tutor[3],
+        email: tutor[0],
+      }));
+    } catch (error) {
+      console.error('Error fetching tutor data:', error);
+    }
+  }
+}
+
+
+
 }
 
 

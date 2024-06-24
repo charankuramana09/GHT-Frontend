@@ -26,7 +26,9 @@ const routes: Routes = [
   { path: 'login',component:StudentLoginComponent},
   {path:'public-tutor', component:PublicTutorDashboardComponent},
   {path :'dashboard',component:PublicTutorDashboardComponent},
-  {path : 'dashboard/:email' , component: PublicTutorDashboardComponent }
+  {path : 'dashboard/:email' , component: PublicTutorDashboardComponent },
+  { path: 'tutor-dashboard/:email', component: TutorDashboardComponent },
+
 
 
 
