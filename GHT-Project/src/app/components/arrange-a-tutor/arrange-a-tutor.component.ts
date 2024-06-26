@@ -39,9 +39,8 @@ export class ArrangeATutorComponent implements OnInit {
             console.log('Inspecting tutor object:', tutor); // Detailed tutor log
 
             // Accessing name and surname from nested personalDetails object
-            const personalDetails = tutor.personalDetails || {};
-            const name = personalDetails.name || 'Unknown';
-            const surname = personalDetails.surname || '';
+            const name = tutor.name || 'Unknown';
+            const surname = tutor.surname || '';
             const fullName = `${name} ${surname}`.trim();
 
             console.log('Constructed fullName:', fullName); // Log the full name
