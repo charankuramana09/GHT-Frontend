@@ -6,7 +6,6 @@
   <div class="row pt-5">
     <div class="col-lg-4 mt-5 mt-lg-0">
       <!-- Author Bio -->
-      <!-- Author Bio -->
       <div *ngFor="let tutor of tutorList" >
         <div class="d-flex flex-column text-center bg-info rounded mb-5 py-5 px-4">
           <img [src]="tutor.image" alt="{{ tutor.name }}'s image" class="tutor-image rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
@@ -39,11 +38,15 @@
       <div class="mb-5  sub-expert">
         <h2 class="mb-4">Subject Experts</h2>
         <ul class="list-group list-group-flush">
+          <div *ngFor="let tutor of tutorList" >
           <li class="list-group-item d-flex justify-content-between align-items-center px-3 text-info">
-            <a href="javascript:void(0)" (click)="displayData()" class="text-info">Maths</a>
+
+            <a href="javascript:void(0)" (click)="displayData()" class="text-info">{{tutor.expertise}} - {{ studentCount }} </a>
             <span class="badge badge-primary badge-pill">150</span>
           </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center px-3">
+        </div>
+          
+          <!-- <li class="list-group-item d-flex justify-content-between align-items-center px-3">
             <a href="javascript:void(0)" (click)="displayData()" class="text-info">Science</a>
             <span class="badge badge-primary badge-pill">131</span>
           </li>
@@ -59,7 +62,7 @@
 
             <a href="javascript:void(0)" (click)="displayData()" class="text-info">Hindi</a>
             <span class="badge badge-primary badge-pill">98</span>
-          </li>
+          </li> -->
         </ul>
       </div>
 

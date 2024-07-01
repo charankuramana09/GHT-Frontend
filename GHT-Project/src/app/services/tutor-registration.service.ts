@@ -153,4 +153,21 @@ getTutorByEmail(email: string): Observable<any> {
 }
 
 
+// student count....
+private baseUrl2 = 'http://localhost:5555/api/seat';
+
+
+countBySubject(tutorName: string): Observable<any[]> {
+  const params = new HttpParams().set('tutorName', tutorName);
+  return this.http.get<any[]>(`${this.baseUrl2}/countBySubject`, { params });
+}
+
+
+//student counts...
+
+countStudentsBySubject(subject: string): Observable<number> {
+  const url = `${this.baseUrl2}/count/${subject}`;
+  return this.http.get<number>(url);
+}
+
 }

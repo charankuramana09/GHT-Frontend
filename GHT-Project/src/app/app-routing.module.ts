@@ -30,8 +30,6 @@ const routes: Routes = [
   { path: 'tutor-dashboard/:email', component: TutorDashboardComponent },
 
 
-
-
 ];
 
 @NgModule({

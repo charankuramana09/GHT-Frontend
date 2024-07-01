@@ -30,7 +30,8 @@
               <div class="form-group">
                 <select class="custom-select border-0 px-4" style="height: 47px" [(ngModel)]="formData.tutor" name="tutor" required>
                   <option value="" disabled selected>Select A Tutor</option>
-                  <option *ngFor="let tutor of availableTutors" [value]="tutor.fullName">{{ tutor.fullName }}</option>
+                  
+                  <option *ngFor="let tutor of availableTutors" [value]="tutor.fullName">{{ tutor.fullname }}  Siva </option>
                 </select>
                 <div class="invalid-feedback">Please select a tutor.</div>
               </div>

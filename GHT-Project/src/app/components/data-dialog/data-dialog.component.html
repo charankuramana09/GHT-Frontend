@@ -1,13 +1,23 @@
-<h2 mat-dialog-title>class of students</h2>
-<!-- <div mat-dialog-content> -->
+<!-- <h2 mat-dialog-title>class of students</h2>
+ <div mat-dialog-content> -->
 <!-- user-list.component.html -->
-<div *ngFor="let data of data">
+<!-- <div *ngFor="let data of data">
   <p>Name: {{ data.name }} &nbsp; &nbsp;
   Email: {{ data.email }}</p>
 </div>
 
-<!-- </div> -->
+</div> 
 <div mat-dialog-actions class="dialog-actions">
   <button mat-button (click)="onClose()">Close</button>
+</div> -->
+
+<h2 mat-dialog-title>Student Names and Email for Tutor: {{ data.tutorName }}</h2>
+<div mat-dialog-content>
+  <ul>
+    <li *ngFor="let subject of data.subjectCounts">
+      {{ subject.name }}  - {{ subject.email }}  -  {{subject.sub}}
+    </li>
+  </ul>
 </div>
- 
+<div mat-dialog-actions>
+</div>

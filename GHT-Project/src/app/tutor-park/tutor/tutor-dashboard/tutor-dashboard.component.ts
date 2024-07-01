@@ -15,6 +15,7 @@ interface Tutor {
   expertise: string;
 }
 
+
 @Component({
   selector: 'app-tutor-dashboard',
   templateUrl: './tutor-dashboard.component.html',
@@ -122,30 +123,16 @@ export class TutorDashboardComponent {
   }
 
 
-    //dailbox
-displayData(): void {
-  // Fetch data from API
-  this.http.get<any>('http://localhost:5555/api/students/all').subscribe(
-    (data) => {
-      // Open the dialog and pass the fetched data
-      this.dialog.open(DataDialogComponent, {
-        data: data
-        });
-      console.log(data);
-    },
-    (error) => {
-      console.error('Error fetching data:', error);
-    }
-  );
-}
-
-
-tutor: any;
-imageUrl: SafeUrl | null = null;
+  
+  
+  tutor: any;
+  imageUrl: SafeUrl | null = null;
 
 
 
 ngOnInit(): void {
+  this.getCountBySubject();
+  this.countStudents();
   if (!this.tutor) {
     console.log('No tutor data available');
     this.loadTutorData();
@@ -181,6 +168,83 @@ async loadTutorData(): Promise<void> {
 
 
 
+//subject list 
+
+// tutorName: string =  this.tutorList[1].name;
+ tutorName: string =  "siva";
+ 
+
+subjectCounts: { name: string, sub:string, email:string }[] = [];
+
+
+getCountBySubject(): void {
+  if (this.tutorName) {
+    console.log(this.subjectCounts);
+    this.trs.countBySubject(this.tutorName).subscribe(
+      (data) => {
+        this.subjectCounts = data.map(d => ({ name: d[0], sub: d[1],email:d[2] }));
+        console.log(data);
+      },
+      (error) => {
+        console.error('Error fetching count by subject', error);
+      }
+    );
+  }
+
+}
+  displayData(): void {
+    const dialogRef = this.dialog.open(DataDialogComponent, {
+      width: '400px',
+      data: { tutorName: this.tutorName, subjectCounts: this.subjectCounts }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+
+
+
+// student count...
+
+
+subject: string = 'Physics'; // Example subject
+studentCount: number = 0;
+
+
+
+countStudents(): void {
+  this.trs.countStudentsBySubject(this.subject)
+  .subscribe(
+      count => {
+        this.studentCount = count;
+        console.log(count);
+      },
+      error => {
+        console.error('Error fetching student count:', error);
+        // Handle error as needed
+      }
+    );
+  }
+
+  //dailbox
+  // displayData(): void {
+  // // Fetch data from API
+  // this.http.get<any>('http://localhost:5555/api/students/all').subscribe(
+  // (data) => {
+  //   // Open the dialog and pass the fetched data
+  //   this.dialog.open(DataDialogComponent, {
+  //     data: data
+  //     });
+  //   console.log(data);
+  // },
+  // (error) => {
+  //   console.error('Error fetching data:', error);
+  // }
+  // );
+  // }
+  
 }
 
 
