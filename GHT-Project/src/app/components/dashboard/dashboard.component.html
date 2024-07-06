@@ -4,7 +4,8 @@
   <section>
     <div class="rt-container">
       <div class="col-rt-12">
-        <div class="Scriptcontent">
+        <div class="Scriptcontent">            
+          
 
           <!-- Student Profile -->
           <div class="student-profile py-4">
@@ -30,10 +31,12 @@
                     <h2 class="mb-4">Classes Information</h2>
                     <ul class="list-group list-group-flush">
                       <!-- Example static data for classes, replace with dynamic data if available -->
-                      <li class="list-group-item d-flex justify-content-between align-items-center px-3 text-info">
-                        <a href="javascript:void(0)" class="text-info">Maths - Mahesh Konamoni</a>
-                        <span class="badge badge-primary badge-pill">150</span>
-                      </li>
+                      <div *ngFor="let student of subjectCounts" >
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-3 text-info">             
+                          <a href="javascript:void(0)" (click)="displayData()" class="text-info">{{student.sub}} - {{ student.tutorname }} </a>
+                          <span class="badge badge-primary badge-pill">150</span>
+                        </li>
+                      </div>
                       <li class="list-group-item d-flex justify-content-between align-items-center px-3">
                         <a href="javascript:void(0)" class="text-info">Science - Charan Kuramana</a>
                         <span class="badge badge-primary badge-pill">131</span>

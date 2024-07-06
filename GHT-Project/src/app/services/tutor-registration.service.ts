@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import {  catchError, throwError } from 'rxjs';
-import { TutorDetails } from '../models/tutor-details.model';
-import { type } from 'node:os';
 import { Student } from '../tutor-park/student/student.model';
 import { Observable, of } from 'rxjs';
 @Injectable({
@@ -164,10 +162,17 @@ countBySubject(tutorName: string): Observable<any[]> {
 
 
 //student counts...
-
 countStudentsBySubject(subject: string): Observable<number> {
   const url = `${this.baseUrl2}/count/${subject}`;
   return this.http.get<number>(url);
 }
+
+
+//student name map to tutorname and subject.
+SelectBySubject(studentName: string): Observable<any[]> {
+  const params = new HttpParams().set('name', studentName);
+  return this.http.get<any[]>(`${this.baseUrl2}/countBySubject/std`, { params });
+}
+
 
 }

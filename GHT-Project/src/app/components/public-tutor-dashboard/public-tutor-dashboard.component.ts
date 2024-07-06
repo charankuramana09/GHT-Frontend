@@ -124,8 +124,8 @@ getCountBySubject(): void {
       }
     );
   }
-
 }
+
   displayData(): void {
     const dialogRef = this.dialog.open(DataDialogComponent, {
       width: '400px',
@@ -142,13 +142,8 @@ getCountBySubject(): void {
 
 // student count...
 
-
-
-
 subject: string = 'Physics'; // Example subject
 studentCount: number = 0;
-
-
 
 countStudents(): void {
   this.trs.countStudentsBySubject(this.subject)
