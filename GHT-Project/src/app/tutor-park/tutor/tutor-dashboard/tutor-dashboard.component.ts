@@ -131,8 +131,6 @@ export class TutorDashboardComponent {
 
 
 ngOnInit(): void {
-  this.getCountBySubject();
-  this.countStudents();
   if (!this.tutor) {
     console.log('No tutor data available');
     this.loadTutorData();
@@ -149,6 +147,10 @@ sanitizeImage(imageData: string): SafeUrl {
 
 tutorList: Tutor[] = [];
 
+tutorAllValues : any =[];
+
+tutorName : any;
+
 async loadTutorData(): Promise<void> {
   const email = this.route.snapshot.paramMap.get('email');
   if (email) {
@@ -160,6 +162,21 @@ async loadTutorData(): Promise<void> {
         expertise: tutor[3],
         email: tutor[0],
       }));
+      this.tutorAllValues = [...this.tutorList];
+      console.log(" totuorname inside function :  "+ this.tutorAllValues)
+
+      // console.log("Tutor list stored in anotherVariable:", JSON.stringify(this.tutorAllValues, null, 2));
+
+      this.tutorAllValues.forEach(tutor => {
+        console.log(`Name: ${tutor.name}, Email: ${tutor.email}, Expertise: ${tutor.expertise}`);
+        this.tutorName = tutor.name
+        this.subject = tutor.expertise
+      });
+      console.log( " Tuot trail name : " + this.tutorName );
+      console.log( " Subjects for tuto :  " + this.subject )
+      this.getCountBySubject();
+      this.countStudents();
+
     } catch (error) {
       console.error('Error fetching tutor data:', error);
     }
@@ -169,15 +186,11 @@ async loadTutorData(): Promise<void> {
 
 
 //subject list 
-
-// tutorName: string =  this.tutorList[1].name;
- tutorName: string =  "siva";
- 
-
 subjectCounts: { name: string, sub:string, email:string }[] = [];
 
 
 getCountBySubject(): void {
+  console.log(" Inside get function :  " + this.tutorName )
   if (this.tutorName) {
     console.log(this.subjectCounts);
     this.trs.countBySubject(this.tutorName).subscribe(
@@ -192,6 +205,7 @@ getCountBySubject(): void {
   }
 
 }
+
   displayData(): void {
     const dialogRef = this.dialog.open(DataDialogComponent, {
       width: '400px',
@@ -208,11 +222,8 @@ getCountBySubject(): void {
 
 // student count...
 
-
-subject: string = 'Physics'; // Example subject
+subject: string ; // Example subject
 studentCount: number = 0;
-
-
 
 countStudents(): void {
   this.trs.countStudentsBySubject(this.subject)

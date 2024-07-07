@@ -35,32 +35,15 @@ export class StudentDashboardProfileComponent {
 // }
 
 ngOnInit(): void {
-  this.getCountBySubject();
   
 }
 
-// tutorName: string =  this.tutorList[1].name;
 studentName: string =  "siva";
  
 
 subjectCounts: { tutorname: string, sub:string }[] = [];
 
 
-getCountBySubject(): void {
-  if (this.studentName) {
-    console.log(this.subjectCounts);
-    this.trs.SelectBySubject(this.studentName).subscribe(
-      (data) => {
-        this.subjectCounts = data.map(d => ({ tutorname: d[0], sub: d[1] }));
-        console.log(data);
-      },
-      (error) => {
-        console.error('Error fetching count by subject', error);
-      }
-    );
-  }
-
-}
   displayData(): void {
     const dialogRef = this.dialog.open(DataDialogComponent, {
       width: '400px',

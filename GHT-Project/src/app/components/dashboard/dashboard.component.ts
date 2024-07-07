@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
   student: any = {};
   imageUrl: SafeUrl | null = null;
   studentId: number | null = null;
+  studentName: string | null = null;
 
   constructor(
     private router: Router, 
@@ -32,14 +33,13 @@ export class DashboardComponent implements OnInit {
   ) {
     const navigation = this.router.getCurrentNavigation();
     this.studentId = navigation?.extras?.state?.['studentId'];
-
-    if (this.studentId) {
-      this.fetchStudentDetails(this.studentId);
-    }
   }
-
+  
   ngOnInit(): void {
-    this.getCountBySubject();2
+    
+        if (this.studentId) {
+          this.fetchStudentDetails(this.studentId);
+        } 
     if (!this.student) {
       console.log('No student data available');
     }
@@ -53,29 +53,30 @@ export class DashboardComponent implements OnInit {
         if (this.student && this.student.image) {
           this.imageUrl = this.sanitizeImage(this.student.image);
         }
+        // Assign the studentName to the outside variable
+        this.studentName = this.student.name;
+        this.getCountBySubject();
       },
       error => {
         console.error('Failed to fetch student details', error);
       }
     );
   }
-
+  
   sanitizeImage(imageData: string): SafeUrl {
     const base64Image = `data:image/jpeg;base64,${imageData}`;
     return this.sanitizer.bypassSecurityTrustUrl(base64Image);
   }
 
-
+ 
   
-  // tutorName: string =  this.tutorList[1].name;
-  studentName: string =  "charan";
-  // studentName: string = this.student.name;
-   
   
   subjectCounts: { tutorname: string, sub:string }[] = [];
   
   
   getCountBySubject(): void {
+    // console.log("Outside variable StudentName: " + this.studentNameOutside);
+    console.log(" inside get function :  " + this.studentName )
     if (this.studentName) {
       console.log(this.subjectCounts);
       this.trs.SelectBySubject(this.studentName).subscribe(
